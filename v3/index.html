@@ -1343,6 +1343,61 @@ button { font: inherit; }
   // the cut between two frames), and a new seek is only issued when that frame number actually
   // changes. With the all-intra (GOP=1) scrub video, every one of those frame-aligned seeks also
   // decodes independently.
+  // 2026-10-16, scrub without freezes on a slow network. Probe (Slow 4G, scrolling 3 s after load): 11-12 of 12 steps
+  // showed no new frame. Every seek into a part of the file that was not downloaded yet made the browser abort and
+  // restart its range request, so the download crawled (~16-43 KB/s of ~188) and the picture froze. Now the time we seek
+  // to never goes past the end of the contiguous buffered range that holds the current picture, minus `bufferMargin`:
+  // the picture follows the scroll target as far as the film is loaded and catches up by itself while `buffered` grows
+  // (updateScrub runs every animation frame), and the download is never cut. Chrome reports `buffered` of a progressive
+  // file as a byte share of the duration, which can run ahead of the really decodable time (by up to ~2 s on the
+  // detailing film), so the margin starts at FILM_SCRUB_BUFFER_MARGIN_S and grows by 0.5 s whenever such a seek still
+  // waits for data after FILM_SCRUB_BUFFER_WAIT_MS; while it waits it is not re-targeted (a re-seek would only chase the
+  // download front again), the watchdog for it is FILM_SCRUB_BUFFER_WATCHDOG_MS. A target in a range loaded through the
+  // end of the film, a picture outside any loaded range, or a jump back outside loaded data: plain seek with the 120 ms
+  // watchdog, exactly as before (so with the whole film loaded nothing changes). If the browser has stopped downloading
+  // by itself (networkState IDLE) and the range end has not moved for FILM_SCRUB_BUFFER_STALL_MS, one seek to the frame
+  // just past the loaded range asks it to continue from there. Nothing buffered yet: no seek (first frame as before).
+  // Returns the time to seek to (<= want) or -1 for "no seek now"; `limitKind` tells updateScrub which watchdog applies.
+  const FILM_SCRUB_BUFFER_MARGIN_S = 0.5;
+  const FILM_SCRUB_BUFFER_MARGIN_MAX_S = 4;
+  const FILM_SCRUB_BUFFER_WAIT_MS = 300;
+  const FILM_SCRUB_BUFFER_WATCHDOG_MS = 3000;
+  const FILM_SCRUB_BUFFER_STALL_MS = 1000;
+  let bufferMargin = FILM_SCRUB_BUFFER_MARGIN_S;
+  let bufferStallEnd = -1;
+  let bufferStallAt = 0;
+  let limitKind = 'plain';
+  let seekKind = 'plain';
+  const bufferedSeekLimit = (want, now, fps) => {
+    const ranges = video.buffered;
+    limitKind = 'plain';
+    if (!ranges.length) return -1;
+    const at = video.currentTime;
+    const tail = Number.isFinite(video.duration) ? video.duration - 0.05 : Infinity;
+    let heldEnd = -1;
+    for (let i = 0; i < ranges.length; i += 1) {
+      const start = ranges.start(i);
+      const end = ranges.end(i);
+      if (want >= start && end >= tail) return want;
+      if (want >= start && want <= end - bufferMargin) {
+        limitKind = 'buffered';
+        return want;
+      }
+      if (heldEnd < 0 && at >= start - 0.05 && at <= end + 0.05) heldEnd = end;
+    }
+    if (heldEnd < 0 || want <= at) return want;
+    limitKind = 'buffered';
+    if (heldEnd !== bufferStallEnd) {
+      bufferStallEnd = heldEnd;
+      bufferStallAt = now;
+    }
+    if (video.networkState === video.NETWORK_IDLE && now - bufferStallAt >= FILM_SCRUB_BUFFER_STALL_MS) {
+      bufferStallAt = now;
+      limitKind = 'nudge';
+      return Math.min(want, heldEnd + 1 / fps);
+    }
+    return Math.max(at, heldEnd - bufferMargin);
+  };
   let lastScrubFrame = -1;
   function updateScrub() {
     if (!metadataReady || reduceMotion.matches) return;
@@ -1355,7 +1410,11 @@ button { font: inherit; }
     let forceReseek = false;
     if (video.seeking) {
       if (!seekWatchdogAt) seekWatchdogAt = now;
-      if (now - seekWatchdogAt < FILM_SCRUB_WATCHDOG_MS) return;
+      if (seekKind === 'buffered' && now - seekWatchdogAt > FILM_SCRUB_BUFFER_WAIT_MS) {
+        seekKind = 'buffered-slow';
+        bufferMargin = Math.min(FILM_SCRUB_BUFFER_MARGIN_MAX_S, bufferMargin + 0.5);
+      }
+      if (now - seekWatchdogAt < (seekKind === 'plain' ? FILM_SCRUB_WATCHDOG_MS : FILM_SCRUB_BUFFER_WATCHDOG_MS)) return;
       // watchdog escape hatch: seeking has been stuck too long -- force a fresh seek below, even
       // if it targets the same frame as last time (a same-value reassignment can still un-stick a
       // browser that left `seeking` on past its own budget).
@@ -1366,7 +1425,8 @@ button { font: inherit; }
 
     const fps = config.media.fps;
     const durationEnd = Number.isFinite(video.duration) ? Math.max(0, video.duration - 1 / fps) : nominalEnd;
-    const seekBaseTime = Math.min(Math.max(0, shown), nominalEnd, durationEnd);
+    const seekBaseTime = bufferedSeekLimit(Math.min(Math.max(0, shown), nominalEnd, durationEnd), now, fps);
+    if (seekBaseTime < 0) return;
     const frameNum = Math.max(0, Math.min(config.media.frames - 1, Math.round(seekBaseTime * fps)));
     if (frameNum === lastScrubFrame && !forceReseek) return;
     const quantizedTime = Math.min((frameNum + 0.5) / fps, durationEnd);
@@ -1375,6 +1435,7 @@ button { font: inherit; }
       video.currentTime = quantizedTime;
       lastScrubFrame = frameNum;
       seekWatchdogAt = now;
+      seekKind = limitKind;
       seekHistory.push({ targetFrame, targetTime: quantizedTime, direction });
       if (seekHistory.length > 40) seekHistory.shift();
     } catch (error) {
