@@ -1,0 +1,1747 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="robots" content="index,follow">
+  <meta name="description" content="Барбершоп ФОРМА в Кемерово: ул. Кирова, 18. Запись и уточнение времени по телефону +7 (913) 138-17-38.">
+  <link rel="canonical" href="https://formabarber.ru/">
+  <link rel="preload" as="image" href="assets/img/first-frame.png" fetchpriority="high">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/favicon.png">
+  <link rel="shortcut icon" href="favicon.ico">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:site_name" content="ФОРМА">
+  <meta property="og:title" content="ФОРМА Барбершоп | Кемерово, ул. Кирова, 18">
+  <meta property="og:description" content="Барбершоп ФОРМА в Кемерово: ул. Кирова, 18. Запись и уточнение времени по телефону +7 (913) 138-17-38.">
+  <meta property="og:url" content="https://formabarber.ru/">
+  <meta property="og:image" content="https://formabarber.ru/assets/work-1.jpg">
+  <meta name="color-scheme" content="dark light">
+  <title>ФОРМА Барбершоп | Кемерово, ул. Кирова, 18</title>
+  <style>html.lenis,
+html.lenis body {
+  height: auto;
+}
+
+.lenis:not(.lenis-autoToggle).lenis-stopped {
+  overflow: clip;
+}
+
+.lenis [data-lenis-prevent],
+.lenis [data-lenis-prevent-wheel],
+.lenis [data-lenis-prevent-touch],
+.lenis [data-lenis-prevent-vertical],
+.lenis [data-lenis-prevent-horizontal] {
+  overscroll-behavior: contain;
+}
+
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
+
+.lenis.lenis-autoToggle {
+  transition-property: overflow;
+  transition-duration: 1ms;
+  transition-behavior: allow-discrete;
+}
+
+@font-face {
+  font-family: "Unbounded Barber";
+  src: url("assets/fonts/unbounded-500.woff2") format("woff2"), url("assets/fonts/unbounded-500.ttf") format("truetype");
+  font-weight: 500;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Unbounded Barber";
+  src: url("assets/fonts/unbounded-700.woff2") format("woff2"), url("assets/fonts/unbounded-700.ttf") format("truetype");
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope Barber";
+  src: url("assets/fonts/manrope-400.woff2") format("woff2"), url("assets/fonts/manrope-400.ttf") format("truetype");
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Manrope Barber";
+  src: url("assets/fonts/manrope-600.woff2") format("woff2"), url("assets/fonts/manrope-600.ttf") format("truetype");
+  font-weight: 600;
+  font-display: swap;
+}
+
+:root {
+  --ink: #111315;
+  --paper: #eef0f1;
+  --graphite: #181b1e;
+  --accent: #c9d2d8;
+  --edge: clamp(20px, 4.2vw, 68px);
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  color-scheme: dark;
+  font-synthesis: none;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: auto; background: var(--graphite); }
+body {
+  margin: 0;
+  min-width: 320px;
+  overflow-x: clip;
+  background: var(--graphite);
+  color: var(--paper);
+  font-family: "Manrope Barber", sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--accent); color: var(--ink); }
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: #24282b; }
+::-webkit-scrollbar-thumb { background: #70787e; border: 2px solid #24282b; border-radius: 999px; }
+
+a { color: inherit; text-decoration-thickness: 1px; text-underline-offset: 0.3em; }
+a, button { -webkit-tap-highlight-color: transparent; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--accent); outline-offset: 5px; }
+button { font: inherit; }
+
+.skip-link {
+  position: fixed;
+  left: 16px;
+  top: 12px;
+  z-index: 30;
+  padding: 10px 14px;
+  background: var(--paper);
+  color: var(--ink);
+  transform: translateY(-160%);
+  transition: transform 180ms var(--ease-out);
+}
+.skip-link:focus { transform: translateY(0); }
+
+.film { position: relative; height: 620dvh; min-height: 3720px; background: #53585c; }
+.film__sticky { position: sticky; top: 0; min-height: 100dvh; height: 100dvh; overflow: hidden; isolation: isolate; background: #53585c; }
+.film__poster, #scrub-video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 57% 50%;
+}
+.film__poster { filter: saturate(0.78) contrast(0.94) brightness(1.1); }
+#scrub-video { opacity: 0; filter: saturate(0.78) contrast(0.94) brightness(1.1); transition: opacity 280ms var(--ease-out); }
+.film__sticky.is-ready #scrub-video { opacity: 1; }
+/* Slow one-shot idle "ken burns" -- 1 -> 1.03 over 8s, once, applied identically (same keyframes,
+   same trigger class) to poster/video and the cutout canvas so the three stay pixel-aligned; the
+   cutout canvas is sized from clientWidth/clientHeight (untransformed layout box, see app.js
+   drawCutCanvas), not getBoundingClientRect(), specifically so this shared transform scales it
+   visually without double-scaling its backing-store resolution. */
+@keyframes film-idle-zoom { from { transform: scale(1); } to { transform: scale(1.03); } }
+.film__sticky.is-hero-revealed .film__poster,
+.film__sticky.is-hero-revealed #scrub-video,
+.film__sticky.is-hero-revealed .hero-name-mask {
+  animation: film-idle-zoom 8s var(--ease-out) 1 forwards;
+}
+.film__veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: var(--veil-opacity, 1);
+  pointer-events: none;
+  will-change: opacity;
+}
+.film__veil::before, .film__veil::after { content: ""; position: absolute; inset: 0; }
+.film__veil::before {
+  background:
+    radial-gradient(ellipse 74% 84% at 56% 42%, transparent 36%, rgba(9, 10, 12, 0.58) 100%),
+    linear-gradient(180deg, rgba(9, 10, 12, 0.5) 0%, transparent 20%, transparent 54%, rgba(9, 10, 12, 0.86) 100%);
+  opacity: var(--hero-veil-mix, 1);
+}
+.film__veil::after {
+  background: linear-gradient(90deg, rgba(13, 15, 17, 0.96) 0%, rgba(13, 15, 17, 0.88) 24%, rgba(13, 15, 17, 0.42) 38%, rgba(13, 15, 17, 0) 57%);
+  opacity: var(--final-veil-mix, 0);
+}
+
+.film__loading {
+  position: absolute;
+  z-index: 8;
+  left: var(--edge);
+  top: 92px;
+  display: grid;
+  grid-template-columns: auto minmax(90px, 180px) auto;
+  align-items: center;
+  gap: 12px;
+  padding: 9px 12px;
+  border-radius: 14px;
+  background: rgba(17, 19, 21, 0.82);
+  color: #e7eaec;
+  font-size: 12px;
+  transition: opacity 180ms var(--ease-out), transform 180ms var(--ease-out);
+}
+.film__loading > i { width: 100%; height: 2px; background: rgba(255,255,255,0.22); overflow: hidden; }
+.film__loading > i::after { content: ""; display: block; width: 46%; height: 100%; background: var(--accent); animation: loading 1.1s ease-in-out infinite alternate; transform-origin: left; }
+.film__loading button { border: 0; padding: 0; background: none; color: var(--accent); cursor: pointer; }
+.film__loading[hidden] { display: none; }
+.film__loading.is-hidden { opacity: 0; transform: translateY(-8px); pointer-events: none; }
+@keyframes loading { from { transform: scaleX(0.4); } to { transform: scaleX(1); } }
+
+/* Name mask wrapper (2026-09-17 rewrite, replaces the old live-video cutout canvas): the "head
+   in front of the name" illusion is now produced by punching a hole directly in the *name text
+   layer* via a CSS mask, instead of compositing a second, separately-decoded copy of the video
+   pixels on top. The mask's alpha is the geometric inverse of the original head/hand cutout PNG
+   (transparent under the head/hand, opaque everywhere else -- see the mask PNG referenced by
+   config/*.json's media.cutoutMask, derived from the old mask via
+   alphaextract+negate+alphamerge), so wherever the head/hand sits, the name is simply absent and
+   the real, live <video> element underneath (z-index 0) shows through on its own -- there is only
+   ever one source of video pixels on screen, so a stale/ghost frame can no longer exist by
+   construction. This wrapper is sized and positioned identically to #scrub-video (inset:0, same
+   box) and uses mask-size:cover + mask-position matching #scrub-video's object-position, which is
+   mathematically the same cover-fit mapping object-fit:cover itself uses (the mask PNG's pixel
+   aspect ratio equals the source video's, 1276x720, so this stays pixel-aligned at any viewport
+   size without any JS resize math). The data-URI mask itself is assigned from app.js (per-company
+   config), not hardcoded here. */
+.hero-name-mask {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+  -webkit-mask-size: cover;
+  mask-size: cover;
+  -webkit-mask-position: 57% 50%;
+  mask-position: 57% 50%;
+  pointer-events: none;
+}
+
+/* Shared by .hero-name and .hero-bottom: only opacity/filter belong here (the scroll-driven
+   fade, set inline from app.js render()); .hero-name keeps its own positioning below, now nested
+   inside .hero-name-mask (z-index 2) instead of sitting directly in .film__sticky -- the bottom
+   info/actions (z-index 4) still layer above it exactly as required. */
+.hero-fade { transition: opacity 180ms linear, filter 180ms linear; }
+
+.hero-name {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: 40%;
+  margin: 0;
+  width: max-content;
+  /* No fixed max-width here on purpose: app.js's fitHeroName() is the sole authority over size,
+     measuring the real (unclamped) box via getBoundingClientRect(); a CSS max-width would silently
+     cap that measurement while nowrap text keeps overflowing past it, invisibly clipped by
+     .film__sticky's overflow:hidden instead of being sized down where it can be seen. */
+  /* left, not center (2026-09-17): width:max-content sizes this box to its widest line, so for a
+     single line text-align is moot (the box already equals the content width) -- it only matters
+     for the two-line .is-wrapped case, where a short second line previously centered itself in
+     the middle of the box and could land squarely behind the head-cutout hole (e.g. "YG
+     BARBERSHOP" split "YG" / "BARBERSHOP" -- only a stray "Y" stayed visible). Left-aligning both
+     lines keeps every line's left edge flush with the long line's left edge instead. */
+  text-align: left;
+  text-transform: uppercase;
+  color: #f5f3ee;
+  font-family: "Unbounded Barber", sans-serif;
+  font-weight: 700;
+  line-height: 0.9;
+  letter-spacing: -0.03em;
+  white-space: nowrap;
+  transform: translate(-50%, calc(-50% - var(--name-lift, 0px)));
+  text-shadow: 0 18px 54px rgba(6, 7, 9, 0.35);
+  will-change: transform, opacity;
+}
+/* Each line is its own block child, so two lines stack vertically on their own -- white-space
+   stays nowrap per span always, so a line can never wrap again internally mid-word. */
+.hero-name span { display: block; white-space: nowrap; }
+
+.hero-bottom { position: absolute; inset: 0; z-index: 4; pointer-events: none; }
+.hero-bottom .hero-info, .hero-bottom .hero-actions { pointer-events: auto; }
+.hero-info {
+  position: absolute;
+  left: var(--edge);
+  bottom: clamp(28px, 5.4vh, 56px);
+  max-width: min(40vw, 560px);
+  color: #f2f4f5;
+}
+.hero-info__rating { display: flex; align-items: baseline; gap: 10px; margin: 0 0 16px; font-size: 15px; text-shadow: 0 4px 16px rgba(0,0,0,.55); }
+.hero-info__rating[hidden] { display: none; }
+.hero-info__stars { color: var(--accent); letter-spacing: 2px; font-size: 16px; }
+.hero-info__rating b { font-weight: 700; }
+.hero-info__rating em { font-style: normal; opacity: .74; }
+.hero-info__tagline { margin: 0; max-width: 20ch; color: #f2f4f5; font-family: "Unbounded Barber", sans-serif; font-size: clamp(19px, 1.65vw, 26px); font-weight: 500; line-height: 1.18; letter-spacing: -0.03em; text-shadow: 0 5px 22px rgba(0,0,0,0.55); text-wrap: balance; }
+.hero-info__tagline span { display: block; }
+.hero-info__address { margin: 14px 0 0; font-style: normal; max-width: 30ch; color: #dfe3e5; font-size: clamp(13px, 1.05vw, 15px); line-height: 1.4; text-shadow: 0 4px 16px rgba(0,0,0,.55); }
+.hero-actions {
+  position: absolute;
+  right: var(--edge);
+  bottom: clamp(28px, 5.4vh, 56px);
+  display: flex;
+  gap: 12px;
+}
+.hero-actions__gallery { color: #f2f4f5; }
+.button--accent { background: var(--accent-btn-bg, var(--accent)); color: var(--accent-btn-text, #111315); }
+.button--ghost { border: 1px solid rgba(238,240,241,.58); background: rgba(17,19,21,.24); color: #f2f4f5; }
+
+/* Load-in stagger (2026-09-17): name -> rating/tagline -> buttons, ~100ms apart, gated by
+   .film__sticky.is-hero-revealed (added once in showReady()); each own opacity is independent of
+   the scroll-driven .hero-fade opacity set inline by app.js render(), so the two effects compose
+   instead of fighting. */
+.hero-name, .hero-info, .hero-actions { opacity: 0; transition: opacity 640ms var(--ease-out); }
+.hero-name { transition-delay: 0ms; }
+.hero-info { transition-delay: 100ms; }
+.hero-actions { transition-delay: 200ms; }
+.film__sticky.is-hero-revealed .hero-name,
+.film__sticky.is-hero-revealed .hero-info,
+.film__sticky.is-hero-revealed .hero-actions { opacity: 1; }
+
+.scene-caption {
+  position: absolute;
+  z-index: 4;
+  width: min(30vw, 420px);
+  opacity: var(--caption-opacity, 0);
+  transform: translate3d(0, var(--caption-y, 30px), 0);
+  color: #f2f4f5;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.72);
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+.scene-caption::before { content: ""; display: block; width: clamp(58px, 5.8vw, 84px); height: 2px; margin-bottom: 15px; background: var(--accent); transform: scaleX(var(--caption-line, 0)); transform-origin: left center; }
+.scene-caption[data-position="left-high"] { left: 4vw; top: 12vh; }
+.scene-caption[data-position="right-high"] { left: auto; right: 4vw; top: 12vh; }
+.scene-caption[data-position="right-low"] { left: auto; right: 4vw; top: 64vh; }
+.scene-caption[data-position="left-middle"] { left: 4vw; top: 14vh; }
+.final-card {
+  left: 5.5vw;
+  right: auto;
+  top: 52%;
+  position: absolute;
+  z-index: 4;
+  width: min(32vw, 460px);
+  color: #f2f4f5;
+  text-align: left;
+  opacity: var(--final-card-opacity, 0);
+  transform: translate3d(0, calc(-50% + var(--final-card-y, 24px)), 0);
+  pointer-events: none;
+  text-shadow: 0 5px 22px rgba(0,0,0,.58);
+  will-change: opacity, transform;
+}
+.final-card[aria-hidden="false"] { pointer-events: auto; }
+.final-card__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 16px;
+  color: #d9dee1;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.final-card__eyebrow::before { content: ""; width: clamp(48px, 4.4vw, 64px); height: 2px; flex: 0 0 auto; background: var(--accent); }
+.final-card__identity { min-height: 1px; }
+.final-card__wordmark {
+  margin: 0;
+  color: #f2f4f5;
+  font-family: "Unbounded Barber", sans-serif;
+  font-size: clamp(52px, 4.6vw, 68px);
+  font-weight: 700;
+  line-height: .86;
+  letter-spacing: -0.04em;
+}
+.final-card__wordmark span { display: block; }
+.final-card__logo { display: block; width: auto; max-width: min(100%, 340px); max-height: 112px; object-fit: contain; object-position: left center; }
+.final-card__logo[hidden] { display: none; }
+.final-card__location { margin: 22px 0 0; max-width: 28ch; color: #e3e7e9; font-size: clamp(14px, 1.2vw, 17px); line-height: 1.42; }
+.final-card__cta { width: fit-content; margin-top: 24px; border: 1px solid rgba(238,240,241,.62); background: #eef0f1; color: #111315; text-shadow: none; }
+.scene-caption strong { display: block; max-width: 13ch; overflow: hidden; clip-path: inset(0 0 var(--title-clip, 100%) 0); transform: translate3d(0, var(--title-shift, 14px), 0); font-family: "Unbounded Barber", sans-serif; font-size: clamp(50px, 3.9vw, 58px); line-height: 1.02; letter-spacing: -0.04em; font-weight: 500; text-wrap: balance; }
+.scene-caption span { display: block; max-width: 34ch; margin-top: 10px; opacity: var(--caption-note-opacity, 0); transform: translate3d(0, var(--note-shift, 10px), 0); color: #e1e5e7; font-size: clamp(15px, 1.18vw, 17px); line-height: 1.45; }
+.film-progress { position: absolute; z-index: 5; left: 0; right: 0; bottom: 0; height: 3px; background: rgba(238,240,241,0.18); }
+.film-progress i { display: block; height: 100%; width: 100%; background: var(--accent); transform: scaleX(0); transform-origin: left; }
+
+.visit, .gallery-section, .reviews-section, .contact { padding: clamp(96px, 12vw, 176px) var(--edge); }
+/* B3: top accent line, drawn in (scaleX 0->1) once .visit enters view via the existing
+   .has-reveal-motion/.is-inview reveal pair app.js already toggles for this section. */
+.visit { position: relative; background: var(--graphite); }
+.visit::before { content: ""; position: absolute; top: 0; left: var(--edge); right: var(--edge); height: 2px; background: var(--accent); transform-origin: left; transform: scaleX(1); transition: transform 700ms var(--ease-out); }
+.has-reveal-motion .visit:not(.is-inview)::before { transform: scaleX(0); }
+.section-heading { display: flex; flex-direction: column; gap: 24px; max-width: 900px; margin-bottom: clamp(56px, 7vw, 96px); }
+.section-heading h2, .contact h2 { margin: 0; font-family: "Unbounded Barber", sans-serif; font-size: clamp(38px, 5.8vw, 82px); line-height: 1.02; letter-spacing: -0.04em; font-weight: 500; text-wrap: balance; }
+.section-heading p { margin: 0; max-width: 58ch; color: #b8bec2; font-size: clamp(17px, 1.5vw, 20px); }
+/* B3: CTA sits beside the heading text on wide viewports, below it on narrow ones (natural DOM
+   order already puts the button after .section-heading__text). */
+.visit .section-heading { max-width: none; gap: 28px; }
+.visit .section-heading__text { display: flex; flex-direction: column; gap: 24px; max-width: 900px; }
+.visit__choices { display: grid; grid-template-columns: 1.25fr 1fr 0.9fr; gap: 0; margin-bottom: 54px; border-top: 1px solid rgba(238,240,241,0.24); }
+/* B3: large accent step numbers above each column. */
+.visit__choices { counter-reset: visit-step; }
+/* padding-top 90px (2026-09-17 fix, was 62px): the number (top:32px, 36px font, ~43px rendered
+   line-height) previously ended around y=75px while the column heading started at y=62px,
+   overlapping it -- 90px leaves a clean ~15px gap below the number instead. */
+.visit__choices article { position: relative; padding: 90px clamp(18px, 2.8vw, 42px) 34px 0; border-bottom: 1px solid rgba(238,240,241,0.24); }
+.visit__choices article::before { counter-increment: visit-step; content: counter(visit-step, decimal-leading-zero); position: absolute; top: 32px; left: 0; font-family: "Unbounded Barber", sans-serif; font-size: 36px; font-weight: 700; color: var(--accent); letter-spacing: -.02em; }
+.visit__choices article + article { padding-left: clamp(18px, 2.8vw, 42px); border-left: 1px solid rgba(238,240,241,0.24); }
+.visit__choices article + article::before { left: clamp(18px, 2.8vw, 42px); }
+.visit__choices h3 { margin: 0 0 12px; font-family: "Unbounded Barber", sans-serif; font-size: clamp(24px, 2.3vw, 32px); font-weight: 500; letter-spacing: -0.03em; }
+.visit__choices p { margin: 0; max-width: 29ch; color: #aeb4b8; }
+
+.button { display: inline-flex; min-height: 50px; align-items: center; justify-content: center; padding: 13px 22px; border-radius: 999px; font-weight: 600; text-decoration: none; white-space: nowrap; transition: transform 160ms var(--ease-out), background-color 180ms var(--ease-out), color 180ms var(--ease-out), border-color 180ms var(--ease-out); }
+.button:active { transform: scale(0.97); }
+.button--light { background: var(--accent); color: #111315; }
+.button--line { border: 1px solid rgba(238,240,241,0.42); color: #eef0f1; }
+
+.gallery-section { background: var(--paper); color: var(--ink); }
+.section-heading--dark p { color: #575d61; }
+.gallery { display: grid; grid-template-columns: 1.42fr 0.95fr 0.82fr; align-items: end; gap: clamp(12px, 2vw, 28px); }
+.gallery figure { margin: 0; overflow: hidden; border-radius: 14px; background: #d4d7d9; }
+.gallery figure:nth-child(1) { aspect-ratio: 0.82; }
+.gallery figure:nth-child(2) { aspect-ratio: 0.74; margin-bottom: clamp(26px, 5vw, 84px); }
+.gallery figure:nth-child(3) { aspect-ratio: 0.64; }
+.gallery img { display: block; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+
+.visually-hidden { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; white-space: nowrap !important; border: 0 !important; }
+.reviews-section { --review-count: 1; position: relative; height: calc((var(--review-count) + .65) * 100dvh); min-height: 980px; padding: 0 var(--edge); background: var(--graphite); color: var(--paper); }
+.reviews-section.is-single { height: auto; min-height: 0; padding-top: 112px; padding-bottom: 112px; }
+.reviews-section.is-single .reviews-sticky { position: relative; height: auto; min-height: 0; }
+.reviews-section.is-single .reviews-stage { min-height: 360px; }
+.reviews-section.is-single .review-card { --review-y: 0vh; --review-opacity: 1; --review-scale: 1; }
+.reviews-sticky { position: sticky; top: 0; min-height: 100dvh; height: 100dvh; display: grid; grid-template-columns: minmax(280px, .82fr) minmax(420px, 1.18fr); gap: clamp(54px, 8vw, 132px); align-items: center; padding-top: 88px; padding-bottom: 28px; overflow: hidden; }
+.reviews-heading { align-self: center; display: flex; flex-direction: column; align-items: flex-start; gap: 30px; }
+.reviews-heading h2 { max-width: 9ch; margin: 0; font-family: "Unbounded Barber", sans-serif; font-size: clamp(42px, 4.9vw, 70px); line-height: 1.02; letter-spacing: -0.04em; font-weight: 500; text-wrap: balance; }
+.reviews-status { display: flex; align-items: baseline; gap: 8px; color: #aeb4b8; font-size: 13px; font-variant-numeric: tabular-nums; letter-spacing: .08em; }
+.reviews-stage { position: relative; align-self: stretch; min-height: 0; }
+.reviews-track { position: absolute; inset: 0; overflow: visible; outline: none; touch-action: pan-y; }
+.reviews-track:focus-visible::after { content: ""; position: absolute; inset: 12% -10px; border: 2px solid var(--accent); border-radius: 16px; pointer-events: none; }
+.review-card { --review-y: 90vh; --review-opacity: 0; --review-scale: .985; position: absolute; z-index: var(--review-z, 1); left: 0; right: 0; top: 50%; min-height: 276px; display: flex; flex-direction: column; justify-content: space-between; gap: 34px; margin: 0; padding: clamp(30px, 3.4vw, 46px); overflow: hidden; border-radius: 14px; background: #e3e7e9; color: var(--ink); opacity: var(--review-opacity); transform: translate3d(0, calc(-50% + var(--review-y)), 0) scale(var(--review-scale)); will-change: transform, opacity; }
+.review-card::before { content: "“"; position: absolute; right: 26px; top: -6px; color: var(--accent); opacity: .55; font-family: "Unbounded Barber", sans-serif; font-size: 150px; line-height: 1; pointer-events: none; }
+.review-card.is-current { background: #f0f2f3; }
+/* B1: large typographic quote. Base size/clamp is the resting state; app.js's fitReviewCard()
+   shrinks font-size (inline style, wins over this clamp) in 1px steps down to a ~22px floor only
+   when a long review would otherwise overflow the pinned stage -- text is never clipped or
+   ellipsis-truncated. */
+/* Full card width (2026-09-17 fix): the quote used to be capped at max-width:60% of the card,
+   leaving the right half empty -- the mark (::before) is behind the text (z-index:auto vs the
+   blockquote's own z-index:1) and only occupies the very top-right corner, so no horizontal
+   reservation is needed for it. Wraps by word at the browser default (no forced break). */
+.review-card blockquote { position: relative; z-index: 1; margin: 0; max-width: 100%; font-size: clamp(30px, 3.2vw, 40px); line-height: 1.3; letter-spacing: -.01em; font-weight: 400; }
+.review-card footer { min-height: 30px; display: flex; align-items: flex-end; justify-content: space-between; gap: 18px; padding-top: 16px; border-top: 2px solid var(--accent); background: none; color: #596167; font-size: 12px; }
+.review-card cite { color: var(--ink); font-style: normal; font-weight: 600; font-size: 15px; }
+/* B1: thin accent progress line replaces the "02 / 04" counter (still present in the DOM as
+   .visually-hidden for aria-live, see template.html) -- app.js sets --rprog on .reviews-stage. */
+.reviews-stage::after { content: ""; position: absolute; left: 0; right: 0; bottom: -22px; height: 3px; background: color-mix(in srgb, var(--accent) 22%, transparent); border-radius: 2px; }
+.reviews-stage::before { content: ""; position: absolute; z-index: 3; left: 0; bottom: -22px; height: 3px; width: var(--rprog, 0%); background: var(--accent); border-radius: 2px; transition: width .5s ease; }
+
+.has-reveal-motion .visit:not(.is-inview) .section-heading,
+.has-reveal-motion .gallery-section:not(.is-inview) .section-heading,
+.has-reveal-motion .reviews-section:not(.is-inview) .reviews-heading,
+.has-reveal-motion .contact:not(.is-inview) .contact__content { opacity: 0; transform: translateY(22px); clip-path: inset(0 0 22% 0); }
+.section-heading, .reviews-heading, .contact__content { transition: opacity 620ms var(--ease-out), transform 620ms var(--ease-out), clip-path 620ms var(--ease-out); }
+.has-reveal-motion .gallery-section:not(.is-inview) .gallery figure { opacity: 0; transform: translateY(18px); }
+.gallery figure { transition: opacity 620ms var(--ease-out), transform 620ms var(--ease-out); }
+.gallery figure:nth-child(2) { transition-delay: 60ms; }
+.gallery figure:nth-child(3) { transition-delay: 120ms; }
+
+.contact { position: relative; min-height: min(780px, 92dvh); display: grid; grid-template-columns: minmax(150px, 0.5fr) minmax(0, 1.5fr); align-items: center; gap: 7vw; background: #111315; overflow: hidden; }
+.contact__mark { color: rgba(201,210,216,0.13); font-family: "Unbounded Barber", sans-serif; font-size: clamp(200px, 30vw, 470px); line-height: 0.8; font-weight: 700; transform: translateX(-0.16em); }
+.contact__content { position: relative; z-index: 1; max-width: 840px; }
+.contact__phone { display: inline-block; margin-top: 38px; font-family: "Unbounded Barber", sans-serif; font-size: clamp(25px, 4.2vw, 60px); line-height: 1.1; letter-spacing: -0.035em; font-weight: 500; }
+.contact address { margin-top: 24px; color: #bec4c8; font-style: normal; font-size: 18px; }
+.contact__actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 40px; }
+
+@media (hover: hover) and (pointer: fine) {
+  .button:hover { transform: translateY(-2px); }
+}
+
+@media (min-width: 1024px) {
+  /* B3: CTA moves onto the same row as the heading, right-aligned and vertically centered with
+     it; below 1024px the button stays in normal DOM flow after .section-heading__text (under the
+     paragraph). */
+  .visit .section-heading { flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+  .visit .section-heading__text { flex: 1; min-width: 260px; }
+  .visit__cta { flex: 0 0 auto; }
+}
+
+@media (max-width: 760px) {
+  .film { height: 540dvh; min-height: 3240px; }
+  /* Full-bleed on mobile too (no cropped-below-header band, no separate grey plaque behind the
+     name): only the object-position shifts to keep the head in frame under the header. */
+  .film__poster, #scrub-video { object-position: 62% 30%; }
+  /* Mask-position must track the same object-position shift so the name-hole stays aligned with
+     the head at this breakpoint too (still visible down to 601px; fully disabled at <=600px
+     below). */
+  .hero-name-mask { -webkit-mask-position: 62% 30%; mask-position: 62% 30%; }
+  .film__veil::before {
+    background:
+      radial-gradient(ellipse 120% 62% at 58% 22%, transparent 30%, rgba(9, 10, 12, 0.62) 100%),
+      linear-gradient(180deg, rgba(9, 10, 12, 0.66) 0%, rgba(9, 10, 12, 0.28) 22%, transparent 40%, transparent 58%, rgba(9, 10, 12, 0.9) 100%);
+  }
+  .film__veil::after { bottom: auto; height: 350px; background: linear-gradient(90deg, rgba(13,15,17,0.95) 0%, rgba(13,15,17,0.82) 58%, rgba(13,15,17,0.16) 100%); }
+  .film__loading { left: 18px; right: 18px; top: 78px; grid-template-columns: auto 1fr auto; }
+  .hero-name { top: calc(64px + 6.5vh); transform: translate(-50%, calc(0px - var(--name-lift, 0px))); }
+  .hero-info { left: 18px; right: 18px; max-width: none; bottom: clamp(112px, 24vh, 168px); }
+  .hero-info__tagline { max-width: none; font-size: 17px; }
+  .hero-actions { left: 18px; right: 18px; bottom: clamp(24px, 4.4vh, 40px); flex-direction: column; gap: 10px; }
+  .hero-actions .button { width: 100%; }
+  .scene-caption, .scene-caption[data-position="left-high"], .scene-caption[data-position="right-high"], .scene-caption[data-position="right-low"], .scene-caption[data-position="left-middle"] { left: 18px; right: 18px; top: 84px; bottom: auto; width: auto; text-align: left; }
+  .final-card {
+    left: 18px;
+    right: 18px;
+    top: 82px;
+    bottom: auto;
+    width: auto;
+    text-align: left;
+    transform: translate3d(0, var(--final-card-y, 24px), 0);
+  }
+  .final-card__eyebrow { gap: 10px; margin-bottom: 10px; font-size: 10px; }
+  .final-card__eyebrow::before { width: 42px; }
+  .final-card__wordmark { font-size: clamp(34px, 10vw, 39px); line-height: .86; }
+  .final-card__logo { max-width: 250px; max-height: 68px; }
+  .final-card__location { margin-top: 12px; font-size: 13px; line-height: 1.35; }
+  .final-card__cta { min-height: 42px; margin-top: 14px; padding: 10px 18px; font-size: 13px; }
+  .scene-caption::before { width: 58px; margin-bottom: 12px; }
+  .scene-caption strong { max-width: 16ch; font-size: clamp(34px, 9.2vw, 37px); line-height: .98; }
+  .scene-caption span { max-width: 40ch; margin-top: 5px; font-size: 14px; line-height: 1.34; }
+  .visit, .gallery-section, .reviews-section, .contact { padding: 92px 18px; }
+  .section-heading { margin-bottom: 48px; }
+  .section-heading h2, .contact h2 { font-size: clamp(35px, 11vw, 52px); }
+  .visit__choices { grid-template-columns: 1fr; }
+  /* Same number/heading gap reasoning as the desktop rule above -- mobile's own top padding was
+     25px, well under the ~75px the number needs. */
+  .visit__choices article { padding: 90px 0 27px; }
+  .visit__choices article + article { padding-left: 0; border-left: 0; }
+  .button { width: 100%; }
+  .gallery { grid-template-columns: 1fr; gap: 14px; }
+  .gallery figure, .gallery figure:nth-child(1), .gallery figure:nth-child(2), .gallery figure:nth-child(3) { aspect-ratio: 4 / 3; margin: 0; }
+  .gallery figure:nth-child(1) img { object-position: center 24%; }
+  .reviews-section { padding: 0 18px; min-height: 900px; }
+  .reviews-sticky { grid-template-columns: 1fr; grid-template-rows: auto minmax(0, 1fr); gap: 18px; padding-top: 84px; padding-bottom: 18px; }
+  .reviews-heading { align-self: start; gap: 12px; }
+  .reviews-heading h2 { max-width: none; font-size: clamp(30px, 9.2vw, 38px); }
+  .reviews-status { font-size: 12px; }
+  .reviews-stage { align-self: stretch; }
+  .reviews-track:focus-visible::after { inset: 8% -5px; }
+  .review-card { min-height: 218px; padding: 26px 22px; }
+  .review-card blockquote { font-size: 18px; }
+  .review-card footer { align-items: flex-start; flex-direction: column; gap: 7px; }
+  .contact { min-height: 760px; grid-template-columns: 1fr; align-content: center; gap: 22px; }
+  .contact__mark { position: absolute; inset: 90px auto auto -18px; font-size: 260px; }
+  .contact__phone { margin-top: 32px; font-size: clamp(23px, 7.2vw, 32px); }
+  .contact__actions { flex-direction: column; }
+}
+
+/* Requirement 7 is explicit about this breakpoint (<=600px, not 760): a narrow portrait crop
+   zooomed in on the head leaves the cutout silhouette covering almost the full width, which would
+   hide the name completely rather than only its middle (the desktop effect, where the head only
+   crosses the centre of a much wider line) -- so on the phone the name is simply a plain readable
+   overlay over the darkened image, no behind-the-head cutout. */
+@media (max-width: 600px) {
+  .hero-name-mask { -webkit-mask-image: none; mask-image: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .film { height: 100dvh; min-height: 680px; }
+  .film__sticky { position: relative; }
+  #scrub-video { display: none; }
+  .hero-name-mask { -webkit-mask-image: none; mask-image: none; }
+  .hero-name, .hero-info, .hero-actions { opacity: 1 !important; filter: none !important; transform: translate(-50%, -50%) !important; }
+  .hero-info, .hero-actions { transform: none !important; }
+  .scene-caption, .final-card, .film-progress, .film__loading { display: none; }
+  .has-reveal-motion .section-heading, .has-reveal-motion .reviews-heading, .has-reveal-motion .contact__content, .has-reveal-motion .gallery figure { opacity: 1 !important; transform: none !important; clip-path: none !important; }
+  .reviews-section { height: auto !important; min-height: 0; padding-top: 96px; padding-bottom: 96px; }
+  .reviews-sticky { position: relative; height: auto; min-height: 0; grid-template-columns: minmax(260px, .82fr) minmax(0, 1.18fr); align-items: start; padding: 0; overflow: visible; }
+  .reviews-stage { min-height: 0; }
+  .reviews-track { position: relative; display: grid; gap: 18px; }
+  .review-card { position: relative; top: auto; min-height: 0; opacity: 1 !important; transform: none !important; }
+}
+
+@media (max-width: 760px) and (prefers-reduced-motion: reduce) {
+  .reviews-sticky { grid-template-columns: 1fr; grid-template-rows: auto auto; }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .scene-caption { text-shadow: 0 3px 10px #000, 0 0 1px #000; }
+}
+.legal { background: #0c0d0f; color: #9aa1a6; padding: 26px var(--edge) 34px; font-size: 14px; line-height: 1.6; border-top: 1px solid rgba(238,240,241,.08); }
+.legal__title { margin: 0 0 6px; color: #c9d2d8; font-weight: 600; letter-spacing: .02em; }
+.legal p { margin: 0; max-width: 760px; }
+</style>
+</head>
+<body>
+  <a class="skip-link" href="#visit">К контактам</a>
+
+  <main id="top">
+    <section class="film" id="film" aria-labelledby="hero-title">
+      <div class="film__sticky">
+        <img class="film__poster" data-poster src="assets/img/first-frame.png" fetchpriority="high" alt="" aria-hidden="true">
+        <video id="scrub-video" muted playsinline preload="auto" aria-label="Стилизованный ролик о процессе мужской стрижки"></video>
+        <div class="hero-name-mask" data-hero-name-mask>
+          <h1 id="hero-title" class="hero-name hero-fade" data-hero-name><span>ФОРМА</span></h1>
+        </div>
+        <div class="film__veil" aria-hidden="true"></div>
+
+        <div class="film__loading" role="status" aria-live="polite">
+          <span>Подготавливаем фильм</span>
+          <i aria-hidden="true"></i>
+          <button type="button" hidden>Повторить</button>
+        </div>
+
+        <div class="hero-bottom hero-fade">
+          <div class="hero-info">
+            <div class="hero-info__rating" data-hero-rating hidden>
+              <span class="hero-info__stars" data-rating-stars aria-hidden="true">★★★★★</span>
+              <b data-rating-value></b>
+              <em data-rating-meta></em>
+            </div>
+            <p class="hero-info__tagline"><span>Новый образ.</span> <span>Новое ощущение себя.</span></p>
+            <address class="hero-info__address"><span data-city>Кемерово</span>, <span data-address>ул. Кирова, 18</span></address>
+          </div>
+          <div class="hero-actions">
+            <a class="button button--accent hero-actions__book" data-hero-book href="tel:+79131381738">Записаться</a>
+            <a class="button button--ghost hero-actions__gallery" href="#gallery">Смотреть работы</a>
+          </div>
+        </div>
+
+        <div class="scene-caption" aria-live="polite">
+          <strong></strong>
+          <span></span>
+        </div>
+
+        <div class="final-card" aria-hidden="true">
+          <p class="final-card__eyebrow" data-final-eyebrow></p>
+          <div class="final-card__identity">
+            <img class="final-card__logo" data-final-logo alt="" hidden>
+            <p class="final-card__wordmark" data-final-wordmark></p>
+          </div>
+          <p class="final-card__location"><span data-city>Кемерово</span><br><span data-address>ул. Кирова, 18</span></p>
+          <a class="button final-card__cta" data-final-booking href="tel:+79131381738" tabindex="-1">Записаться</a>
+        </div>
+
+        <div class="film-progress" aria-hidden="true"><i></i></div>
+      </div>
+    </section>
+
+    <section class="visit" id="visit" aria-labelledby="visit-title">
+      <div class="section-heading">
+        <div class="section-heading__text">
+          <h2 id="visit-title">Перед визитом</h2>
+          <p>Позвоните и коротко опишите желаемую форму. По телефону можно уточнить время и детали записи.</p>
+        </div>
+        <a class="button button--light visit__cta" data-phone-link href="tel:+79131381738">Позвонить и уточнить</a>
+      </div>
+      <div class="visit__choices">
+        <article><h3>Что меняем</h3><p>Длину, контур, форму бороды или весь образ.</p></article>
+        <article><h3>Что сохраняем</h3><p>Привычную укладку, длину или детали, которые вам подходят.</p></article>
+        <article><h3>Когда удобно</h3><p>Назовите подходящий день. Свободное время уточнит салон.</p></article>
+      </div>
+    </section>
+
+    <section class="gallery-section" id="gallery" aria-labelledby="gallery-title">
+      <div class="section-heading section-heading--dark">
+        <h2 id="gallery-title">Стрижка и детали ухода</h2>
+        <p>Форма стрижки, аккуратный контур и детали ухода.</p>
+      </div>
+      <div class="gallery" data-gallery></div>
+    </section>
+
+    <section class="reviews-section" id="reviews" aria-labelledby="reviews-title" hidden>
+      <div class="reviews-sticky">
+        <div class="reviews-heading">
+          <h2 id="reviews-title">Отзывы клиентов</h2>
+          <!-- B1: counter kept for aria-live announcements, visually replaced by the accent
+               progress line on .reviews-stage (see styles.css). -->
+          <div class="reviews-status visually-hidden" aria-live="polite" aria-atomic="true">
+            <span class="visually-hidden">Отзыв </span><span data-review-current>01</span><span aria-hidden="true">/</span><span data-review-total>01</span>
+          </div>
+        </div>
+        <div class="reviews-stage">
+          <div class="reviews-track" data-review-track tabindex="0" aria-label="Отзывы клиентов. Стрелки вверх и вниз переключают отзывы."></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact__mark" aria-hidden="true">Ф</div>
+      <div class="contact__content">
+        <h2 id="contact-title">Запись начинается со звонка</h2>
+        <a class="contact__phone" data-phone-link data-phone-display href="tel:+79131381738">+7 (913) 138-17-38</a>
+        <address><span data-city>Кемерово</span>, <span data-address>ул. Кирова, 18</span></address>
+        <div class="contact__actions">
+          <a class="button button--light" data-phone-link href="tel:+79131381738">Позвонить</a>
+          <a class="button button--line" data-map-link href="#" target="_blank" rel="noopener noreferrer">Показать на карте</a>
+          <a class="button button--line" data-vk-link href="https://vk.com/barbershop_forma" target="_blank" rel="noopener noreferrer">ВКонтакте</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="legal" id="legal" data-requisites-placeholder>
+    <p class="legal__title">ФОРМА барбершоп</p>
+    <p>Реквизиты уточняются.</p>
+  </footer>
+
+  <script id="portable-video" type="application/octet-stream"></script>
+  <script>(function(){var e=`1.3.26`;function t(e,t,n){return Math.max(e,Math.min(t,n))}function n(e,t,n){return(1-n)*e+n*t}function r(e,t,r,i){return n(e,t,1-Math.exp(-r*i))}function i(e,t){return(e%t+t)%t}var a=class{isRunning=!1;value=0;from=0;to=0;currentTime=0;lerp;duration;easing;onUpdate;advance(e){if(!this.isRunning)return;let n=!1;if(this.duration&&this.easing){this.currentTime+=e;let r=t(0,this.currentTime/this.duration,1);n=r>=1;let i=n?1:this.easing(r);this.value=this.from+(this.to-this.from)*i}else this.lerp?(this.value=r(this.value,this.to,this.lerp*60,e),Math.round(this.value)===Math.round(this.to)&&(this.value=this.to,n=!0)):(this.value=this.to,n=!0);n&&this.stop(),this.onUpdate?.(this.value,n)}stop(){this.isRunning=!1}fromTo(e,t,{lerp:n,duration:r,easing:i,onStart:a,onUpdate:o}){this.from=this.value=e,this.to=t,this.lerp=n,this.duration=r,this.easing=i,this.currentTime=0,this.isRunning=!0,a?.(),this.onUpdate=o}};function o(e,t){let n;return function(...r){clearTimeout(n),n=setTimeout(()=>{n=void 0,e.apply(this,r)},t)}}var s=class{width=0;height=0;scrollHeight=0;scrollWidth=0;debouncedResize;wrapperResizeObserver;contentResizeObserver;constructor(e,t,{autoResize:n=!0,debounce:r=250}={}){this.wrapper=e,this.content=t,n&&(this.debouncedResize=o(this.resize,r),this.wrapper instanceof Window?window.addEventListener(`resize`,this.debouncedResize):(this.wrapperResizeObserver=new ResizeObserver(this.debouncedResize),this.wrapperResizeObserver.observe(this.wrapper)),this.contentResizeObserver=new ResizeObserver(this.debouncedResize),this.contentResizeObserver.observe(this.content)),this.resize()}destroy(){this.wrapperResizeObserver?.disconnect(),this.contentResizeObserver?.disconnect(),this.wrapper===window&&this.debouncedResize&&window.removeEventListener(`resize`,this.debouncedResize)}resize=()=>{this.onWrapperResize(),this.onContentResize()};onWrapperResize=()=>{this.wrapper instanceof Window?(this.width=window.innerWidth,this.height=window.innerHeight):(this.width=this.wrapper.clientWidth,this.height=this.wrapper.clientHeight)};onContentResize=()=>{this.wrapper instanceof Window?(this.scrollHeight=this.content.scrollHeight,this.scrollWidth=this.content.scrollWidth):(this.scrollHeight=this.wrapper.scrollHeight,this.scrollWidth=this.wrapper.scrollWidth)};get limit(){return{x:this.scrollWidth-this.width,y:this.scrollHeight-this.height}}},c=class{events={};emit(e,...t){let n=this.events[e]||[];for(let e=0,r=n.length;e<r;e++)n[e]?.(...t)}on(e,t){return this.events[e]?this.events[e].push(t):this.events[e]=[t],()=>{this.events[e]=this.events[e]?.filter(e=>t!==e)}}off(e,t){this.events[e]=this.events[e]?.filter(e=>t!==e)}destroy(){this.events={}}};let l={passive:!1};function u(e,t){return e===1?16.666666666666668:e===2?t:1}var d=class{touchStart={x:0,y:0};lastDelta={x:0,y:0};window={width:0,height:0};emitter=new c;constructor(e,t={wheelMultiplier:1,touchMultiplier:1}){this.element=e,this.options=t,window.addEventListener(`resize`,this.onWindowResize),this.onWindowResize(),this.element.addEventListener(`wheel`,this.onWheel,l),this.element.addEventListener(`touchstart`,this.onTouchStart,l),this.element.addEventListener(`touchmove`,this.onTouchMove,l),this.element.addEventListener(`touchend`,this.onTouchEnd,l)}on(e,t){return this.emitter.on(e,t)}destroy(){this.emitter.destroy(),window.removeEventListener(`resize`,this.onWindowResize),this.element.removeEventListener(`wheel`,this.onWheel,l),this.element.removeEventListener(`touchstart`,this.onTouchStart,l),this.element.removeEventListener(`touchmove`,this.onTouchMove,l),this.element.removeEventListener(`touchend`,this.onTouchEnd,l)}onTouchStart=e=>{let{clientX:t,clientY:n}=e.targetTouches?e.targetTouches[0]:e;this.touchStart.x=t,this.touchStart.y=n,this.lastDelta={x:0,y:0},this.emitter.emit(`scroll`,{deltaX:0,deltaY:0,event:e})};onTouchMove=e=>{let{clientX:t,clientY:n}=e.targetTouches?e.targetTouches[0]:e,r=-(t-this.touchStart.x)*this.options.touchMultiplier,i=-(n-this.touchStart.y)*this.options.touchMultiplier;this.touchStart.x=t,this.touchStart.y=n,this.lastDelta={x:r,y:i},this.emitter.emit(`scroll`,{deltaX:r,deltaY:i,event:e})};onTouchEnd=e=>{this.emitter.emit(`scroll`,{deltaX:this.lastDelta.x,deltaY:this.lastDelta.y,event:e})};onWheel=e=>{let{deltaX:t,deltaY:n,deltaMode:r}=e,i=u(r,this.window.width),a=u(r,this.window.height);t*=i,n*=a,t*=this.options.wheelMultiplier,n*=this.options.wheelMultiplier,this.emitter.emit(`scroll`,{deltaX:t,deltaY:n,event:e})};onWindowResize=()=>{this.window={width:window.innerWidth,height:window.innerHeight}}};let f=e=>Math.min(1,1.001-2**(-10*e));var p=class{_isScrolling=!1;_isStopped=!1;_isLocked=!1;_preventNextNativeScrollEvent=!1;_resetVelocityTimeout=null;_rafId=null;_isDraggingSelection=!1;reducedMotionMediaQuery=window.matchMedia(`(prefers-reduced-motion: reduce)`);isTouching;isIos;time=0;userData={};lastVelocity=0;velocity=0;direction=0;options;targetScroll;animatedScroll;animate=new a;emitter=new c;dimensions;virtualScroll;constructor({wrapper:t=window,content:n=document.documentElement,eventsTarget:r=t,smoothWheel:i=!0,syncTouch:a=!1,syncTouchLerp:o=.075,touchInertiaExponent:c=1.7,duration:l,easing:u,lerp:p=.1,infinite:m=!1,orientation:h=`vertical`,gestureOrientation:g=h===`horizontal`?`both`:`vertical`,touchMultiplier:_=1,wheelMultiplier:v=1,autoResize:y=!0,prevent:b,virtualScroll:x,overscroll:S=!0,autoRaf:C=!1,anchors:w=!1,autoToggle:T=!1,allowNestedScroll:E=!1,__experimental__naiveDimensions:D=!1,naiveDimensions:O=D,stopInertiaOnNavigate:k=!1,respectReducedMotion:A=!0}={}){window.lenisVersion=e,window.lenis||(window.lenis={}),window.lenis.version=e,h===`horizontal`&&(window.lenis.horizontal=!0),a===!0&&(window.lenis.touch=!0),this.isIos=/(iPad|iPhone|iPod)/g.test(navigator.userAgent),(!t||t===document.documentElement)&&(t=window),typeof l==`number`&&typeof u!=`function`?u=f:typeof u==`function`&&typeof l!=`number`&&(l=1),this.options={wrapper:t,content:n,eventsTarget:r,smoothWheel:i,syncTouch:a,syncTouchLerp:o,touchInertiaExponent:c,duration:l,easing:u,lerp:p,infinite:m,gestureOrientation:g,orientation:h,touchMultiplier:_,wheelMultiplier:v,autoResize:y,prevent:b,virtualScroll:x,overscroll:S,autoRaf:C,anchors:w,autoToggle:T,allowNestedScroll:E,naiveDimensions:O,stopInertiaOnNavigate:k,respectReducedMotion:A},this.dimensions=new s(t,n,{autoResize:y}),this.updateClassName(),this.targetScroll=this.animatedScroll=this.actualScroll,this.options.wrapper.addEventListener(`scroll`,this.onNativeScroll),this.options.wrapper.addEventListener(`scrollend`,this.onScrollEnd,{capture:!0}),(this.options.anchors||this.options.stopInertiaOnNavigate)&&this.options.wrapper.addEventListener(`click`,this.onClick),this.options.wrapper.addEventListener(`pointerdown`,this.onPointerDown),this.virtualScroll=new d(r,{touchMultiplier:_,wheelMultiplier:v}),this.virtualScroll.on(`scroll`,this.onVirtualScroll),this.options.autoToggle&&(this.checkOverflow(),this.rootElement.addEventListener(`transitionend`,this.onTransitionEnd)),this.options.autoRaf&&(this._rafId=requestAnimationFrame(this.raf))}destroy(){this.emitter.destroy(),this.options.wrapper.removeEventListener(`scroll`,this.onNativeScroll),this.options.wrapper.removeEventListener(`scrollend`,this.onScrollEnd,{capture:!0}),this.options.wrapper.removeEventListener(`pointerdown`,this.onPointerDown),(this.options.anchors||this.options.stopInertiaOnNavigate)&&this.options.wrapper.removeEventListener(`click`,this.onClick),this.virtualScroll.destroy(),this.dimensions.destroy(),this.cleanUpClassName(),this._rafId&&cancelAnimationFrame(this._rafId)}on(e,t){return this.emitter.on(e,t)}off(e,t){return this.emitter.off(e,t)}onScrollEnd=e=>{e instanceof CustomEvent||(this.isScrolling===`smooth`||this.isScrolling===!1)&&e.stopPropagation()};dispatchScrollendEvent=()=>{this.options.wrapper.dispatchEvent(new CustomEvent(`scrollend`,{bubbles:this.options.wrapper===window,detail:{lenisScrollEnd:!0}}))};get overflow(){let e=this.isHorizontal?`overflow-x`:`overflow-y`;return getComputedStyle(this.rootElement)[e]}checkOverflow(){[`hidden`,`clip`].includes(this.overflow)?this.internalStop():this.internalStart()}onTransitionEnd=e=>{e.propertyName?.includes(`overflow`)&&e.target===this.rootElement&&this.checkOverflow()};setScroll(e){this.isHorizontal?this.options.wrapper.scrollTo({left:e,behavior:`instant`}):this.options.wrapper.scrollTo({top:e,behavior:`instant`})}onClick=e=>{let t=e.composedPath().filter(e=>e instanceof HTMLAnchorElement&&e.href).map(e=>new URL(e.href)),n=new URL(window.location.href);if(this.options.anchors){let e=t.find(e=>n.host===e.host&&n.pathname===e.pathname&&e.hash);if(e){let t=typeof this.options.anchors==`object`&&this.options.anchors?this.options.anchors:void 0,n=decodeURIComponent(e.hash);this.scrollTo(n,t);return}}if(this.options.stopInertiaOnNavigate&&t.some(e=>n.host===e.host&&n.pathname!==e.pathname)){this.reset();return}};onPointerDown=e=>{e.button===1&&this.reset()};isTouchOnSelectionHandle(e){let t=window.getSelection();if(!t||t.isCollapsed||t.rangeCount===0)return!1;let n=e.targetTouches[0]??e.changedTouches[0];if(!n)return!1;let r=t.getRangeAt(0).getClientRects();if(r.length===0)return!1;let i=r[0],a=r[r.length-1],o=Math.hypot(n.clientX-i.left,n.clientY-i.top)<=40,s=Math.hypot(n.clientX-a.right,n.clientY-a.bottom)<=40;return o||s}onVirtualScroll=e=>{if(typeof this.options.virtualScroll==`function`&&this.options.virtualScroll(e)===!1)return;let{deltaX:t,deltaY:n,event:r}=e;if(this.emitter.emit(`virtual-scroll`,{deltaX:t,deltaY:n,event:r}),r.ctrlKey||r.lenisStopPropagation)return;let i=r.type.includes(`touch`),a=r.type.includes(`wheel`);if(i&&this.isIos&&(r.type===`touchstart`&&(this._isDraggingSelection=this.isTouchOnSelectionHandle(r)),this._isDraggingSelection)){r.type===`touchend`&&(this._isDraggingSelection=!1);return}this.isTouching=r.type===`touchstart`||r.type===`touchmove`;let o=t===0&&n===0;if(this.options.syncTouch&&i&&r.type===`touchstart`&&o&&!this.isStopped&&!this.isLocked){this.reset();return}let s=this.options.gestureOrientation===`vertical`&&n===0||this.options.gestureOrientation===`horizontal`&&t===0;if(o||s)return;let c=r.composedPath();c=c.slice(0,c.indexOf(this.rootElement));let l=this.options.prevent,u=Math.abs(t)>=Math.abs(n)?`horizontal`:`vertical`;if(c.find(e=>e instanceof HTMLElement&&(typeof l==`function`&&l?.(e)||e.hasAttribute?.(`data-lenis-prevent`)||u===`vertical`&&e.hasAttribute?.(`data-lenis-prevent-vertical`)||u===`horizontal`&&e.hasAttribute?.(`data-lenis-prevent-horizontal`)||i&&e.hasAttribute?.(`data-lenis-prevent-touch`)||a&&e.hasAttribute?.(`data-lenis-prevent-wheel`)||this.options.allowNestedScroll&&this.hasNestedScroll(e,{deltaX:t,deltaY:n}))))return;if(this.isStopped||this.isLocked){r.cancelable&&r.preventDefault();return}if(!(this.options.syncTouch&&i||this.options.smoothWheel&&a)){this.isScrolling=`native`,this.animate.stop(),r.lenisStopPropagation=!0;return}let d=n;this.options.gestureOrientation===`both`?d=Math.abs(n)>Math.abs(t)?n:t:this.options.gestureOrientation===`horizontal`&&(d=t),(!this.options.overscroll||this.options.infinite||this.options.wrapper!==window&&this.limit>0&&(this.animatedScroll>0&&this.animatedScroll<this.limit||this.animatedScroll===0&&n>0||this.animatedScroll===this.limit&&n<0))&&(r.lenisStopPropagation=!0),r.cancelable&&r.preventDefault();let f=i&&this.options.syncTouch,p=i&&r.type===`touchend`;p&&(d=Math.sign(d)*Math.abs(this.velocity)**this.options.touchInertiaExponent),this.scrollTo(this.targetScroll+d,{programmatic:!1,...f?{lerp:p?this.options.syncTouchLerp:1}:{lerp:this.options.lerp,duration:this.options.duration,easing:this.options.easing}})};resize(){this.dimensions.resize(),this.animatedScroll=this.targetScroll=this.actualScroll,this.emit()}emit(){this.emitter.emit(`scroll`,this)}onNativeScroll=()=>{if(this._resetVelocityTimeout!==null&&(clearTimeout(this._resetVelocityTimeout),this._resetVelocityTimeout=null),this._preventNextNativeScrollEvent){this._preventNextNativeScrollEvent=!1;return}if(this.isScrolling===!1||this.isScrolling===`native`){let e=this.animatedScroll;this.animatedScroll=this.targetScroll=this.actualScroll,this.lastVelocity=this.velocity,this.velocity=this.animatedScroll-e,this.direction=Math.sign(this.animatedScroll-e),this.isStopped||(this.isScrolling=`native`),this.emit(),this.velocity!==0&&(this._resetVelocityTimeout=setTimeout(()=>{this.lastVelocity=this.velocity,this.velocity=0,this.isScrolling=!1,this.emit()},400))}};reset(){this.isLocked=!1,this.isScrolling=!1,this.animatedScroll=this.targetScroll=this.actualScroll,this.lastVelocity=this.velocity=0,this.animate.stop()}start(){if(this.isStopped){if(this.options.autoToggle){this.rootElement.style.removeProperty(`overflow`);return}this.internalStart()}}internalStart(){this.isStopped&&(this.reset(),this.isStopped=!1,this.emit())}stop(){if(!this.isStopped){if(this.options.autoToggle){this.rootElement.style.setProperty(`overflow`,`clip`);return}this.internalStop()}}internalStop(){this.isStopped||(this.reset(),this.isStopped=!0,this.emit())}raf=e=>{let t=e-(this.time||e);this.time=e,this.animate.advance(t*.001),this.options.autoRaf&&(this._rafId=requestAnimationFrame(this.raf))};scrollTo(e,{offset:n=0,immediate:r=!1,lock:i=!1,programmatic:a=!0,lerp:o=a?this.options.lerp:void 0,duration:s=a?this.options.duration:void 0,easing:c=a?this.options.easing:void 0,onStart:l,onComplete:u,force:d=!1,userData:p}={}){if(this.prefersReducedMotion&&(a?r=!0:(o=1,s=void 0,c=void 0)),(this.isStopped||this.isLocked)&&!d)return;let m=e,h=n;if(typeof m==`string`&&[`top`,`left`,`start`,`#`].includes(m))m=0;else if(typeof m==`string`&&[`bottom`,`right`,`end`].includes(m))m=this.limit;else{let e=null;if(typeof m==`string`?(e=m.startsWith(`#`)?document.getElementById(m.slice(1)):document.querySelector(m),e||(m===`#top`?m=0:console.warn(`Lenis: Target not found`,m))):m instanceof HTMLElement&&m?.nodeType&&(e=m),e){if(this.options.wrapper!==window){let e=this.rootElement.getBoundingClientRect();h-=this.isHorizontal?e.left:e.top}let t=e.getBoundingClientRect(),n=getComputedStyle(e),r=this.isHorizontal?Number.parseFloat(n.scrollMarginLeft):Number.parseFloat(n.scrollMarginTop),i=getComputedStyle(this.rootElement),a=this.isHorizontal?Number.parseFloat(i.scrollPaddingLeft):Number.parseFloat(i.scrollPaddingTop);m=(this.isHorizontal?t.left:t.top)+this.animatedScroll-(Number.isNaN(r)?0:r)-(Number.isNaN(a)?0:a)}}if(typeof m==`number`){if(m+=h,this.options.infinite){if(a){this.targetScroll=this.animatedScroll=this.scroll;let e=m-this.animatedScroll;e>this.limit/2?m-=this.limit:e<-this.limit/2&&(m+=this.limit)}}else m=t(0,m,this.limit);if(m===this.targetScroll){l?.(this),u?.(this);return}if(this.userData=p??{},r){this.animatedScroll=this.targetScroll=m,this.setScroll(this.scroll),this.reset(),this.preventNextNativeScrollEvent(),this.emit(),u?.(this),this.userData={},requestAnimationFrame(()=>{this.dispatchScrollendEvent()});return}a||(this.targetScroll=m),typeof s==`number`&&typeof c!=`function`?c=f:typeof c==`function`&&typeof s!=`number`&&(s=1),this.animate.fromTo(this.animatedScroll,m,{duration:s,easing:c,lerp:o,onStart:()=>{i&&(this.isLocked=!0),this.isScrolling=`smooth`,l?.(this)},onUpdate:(e,t)=>{this.isScrolling=`smooth`,this.lastVelocity=this.velocity,this.velocity=e-this.animatedScroll,this.direction=Math.sign(this.velocity),this.animatedScroll=e,this.setScroll(this.scroll),a&&(this.targetScroll=e),t||this.emit(),t&&(this.reset(),this.emit(),u?.(this),this.userData={},requestAnimationFrame(()=>{this.dispatchScrollendEvent()}),this.preventNextNativeScrollEvent())}})}}preventNextNativeScrollEvent(){this._preventNextNativeScrollEvent=!0,requestAnimationFrame(()=>{this._preventNextNativeScrollEvent=!1})}hasNestedScroll(e,{deltaX:t,deltaY:n}){let r=Date.now();e._lenis||={};let i=e._lenis,a,o,s,c,l,u,d,f,p,m;if(r-(i.time??0)>2e3){i.time=Date.now();let t=window.getComputedStyle(e);if(i.computedStyle=t,a=[`auto`,`overlay`,`scroll`].includes(t.overflowX),o=[`auto`,`overlay`,`scroll`].includes(t.overflowY),l=[`auto`].includes(t.overscrollBehaviorX),u=[`auto`].includes(t.overscrollBehaviorY),i.hasOverflowX=a,i.hasOverflowY=o,!(a||o))return!1;d=e.scrollWidth,f=e.scrollHeight,p=e.clientWidth,m=e.clientHeight,s=d>p,c=f>m,i.isScrollableX=s,i.isScrollableY=c,i.scrollWidth=d,i.scrollHeight=f,i.clientWidth=p,i.clientHeight=m,i.hasOverscrollBehaviorX=l,i.hasOverscrollBehaviorY=u}else s=i.isScrollableX,c=i.isScrollableY,a=i.hasOverflowX,o=i.hasOverflowY,d=i.scrollWidth,f=i.scrollHeight,p=i.clientWidth,m=i.clientHeight,l=i.hasOverscrollBehaviorX,u=i.hasOverscrollBehaviorY;if(!(a&&s||o&&c))return!1;let h=Math.abs(t)>=Math.abs(n)?`horizontal`:`vertical`,g,_,v,y,b,x;if(h===`horizontal`)g=Math.round(e.scrollLeft),_=d-p,v=t,y=a,b=s,x=l;else if(h===`vertical`)g=Math.round(e.scrollTop),_=f-m,v=n,y=o,b=c,x=u;else return!1;return!x&&(g>=_||g<=0)?!0:(v>0?g<_:g>0)&&y&&b}get rootElement(){return this.options.wrapper===window?document.documentElement:this.options.wrapper}get limit(){return this.options.naiveDimensions?this.isHorizontal?this.rootElement.scrollWidth-this.rootElement.clientWidth:this.rootElement.scrollHeight-this.rootElement.clientHeight:this.dimensions.limit[this.isHorizontal?`x`:`y`]}get isHorizontal(){return this.options.orientation===`horizontal`}get actualScroll(){let e=this.options.wrapper;return this.isHorizontal?e.scrollX??e.scrollLeft:e.scrollY??e.scrollTop}get scroll(){return this.options.infinite?i(this.animatedScroll,this.limit):this.animatedScroll}get progress(){return this.limit===0?1:this.scroll/this.limit}get isScrolling(){return this._isScrolling}set isScrolling(e){this._isScrolling!==e&&(this._isScrolling=e,this.updateClassName())}get isStopped(){return this._isStopped}set isStopped(e){this._isStopped!==e&&(this._isStopped=e,this.updateClassName())}get isLocked(){return this._isLocked}set isLocked(e){this._isLocked!==e&&(this._isLocked=e,this.updateClassName())}get isSmooth(){return this.isScrolling===`smooth`}get prefersReducedMotion(){return this.options.respectReducedMotion&&this.reducedMotionMediaQuery.matches}get className(){let e=`lenis`;return this.options.autoToggle&&(e+=` lenis-autoToggle`),this.isStopped&&(e+=` lenis-stopped`),this.isLocked&&(e+=` lenis-locked`),this.isScrolling&&(e+=` lenis-scrolling`),this.isScrolling===`smooth`&&(e+=` lenis-smooth`),e}updateClassName(){this.cleanUpClassName(),this.className.split(` `).forEach(e=>{this.rootElement.classList.add(e)})}cleanUpClassName(){for(let e of Array.from(this.rootElement.classList))(e===`lenis`||e.startsWith(`lenis-`))&&this.rootElement.classList.remove(e)}};globalThis.Lenis=p,globalThis.Lenis.prototype=p.prototype})();
+//# sourceMappingURL=lenis.min.js.map
+/* Lenis 1.3.26 MIT license: The MIT License
+ 
+ Copyright (c) 2024 darkroom.engineering
+ 
+ Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+ 
+ The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+ 
+ THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE. */</script>
+  <script>const SITE_CONFIG = {"business":{"name":"ФОРМА","heroName":"ФОРМА","heroNameLines":["ФОРМА"],"city":"Кемерово","address":"ул. Кирова, 18","phoneDisplay":"+7 (913) 138-17-38","phoneHref":"tel:+79131381738","mapHref":"https://yandex.com/maps/org/forma/83943351995/","logo":"assets/logo-forma.jpg","logoStatus":"Реальный логотип ФОРМА БАРБЕРШОП (чёрно-белый), подтверждён на 2ГИС/Яндекс Картах/Telegram/VK; источник изображения — Яндекс Карты (orig)."},"palette":{"accent":"#E4E4E1","ink":"#0E0E0F","paper":"#F1F1EF","graphite":"#131314"},"media":{"source":"assets/media/scroll-13s-allintra.mp4","poster":"first-frame.png","fallback":"end-13s.png","fps":24,"frames":312,"duration":13,"endHoldViewports":1,"captions":[{"from":0.13,"to":0.29,"position":"left-high","title":"Форма под тебя","note":"Силуэт собирается с учётом длины и привычной укладки."},{"from":0.33,"to":0.5,"position":"right-high","title":"Точность в каждом движении","note":"Контур выстраивается постепенно, без лишней резкости."},{"from":0.54,"to":0.73,"position":"right-low","title":"Чистая линия","note":"Переход остаётся мягким, а форма читается точно."},{"from":0.77,"to":1,"position":"final-left-middle","title":"Твой новый образ","note":""}],"posterDataUri":"assets/img/first-frame.png","fallbackDataUri":"assets/img/end-frame.png","cutoutMaskDataUri":"assets/img/name-mask.png","sourceUrl":"assets/media/scroll-13s-allintra.mp4"},"gallery":[{"source":"assets/work-1.jpg","alt":"Фейд и оформленная борода — работа барбершопа ФОРМА, Кемерово","dataUri":"assets/work-1.jpg"},{"source":"assets/work-2.jpg","alt":"Буз-кат с фейдом и бородой — работа барбершопа ФОРМА, Кемерово","dataUri":"assets/work-2.jpg"},{"source":"assets/work-3.jpg","alt":"Стрижка с фейдом, профиль — работа барбершопа ФОРМА, Кемерово","dataUri":"assets/work-3.jpg"}],"reviews":[{"author":"Рик Г.","text":"Все здорово.","rating":5,"date":null,"sourceUrl":"https://2gis.ru/kemerovo/firm/70000001055599025/tab/reviews"},{"author":"Кристина Ж.","text":"Все отлично, мастер Данил хорошо выполнил запрос по поводу стрижки","rating":5,"date":null,"sourceUrl":"https://2gis.ru/kemerovo/firm/70000001055599025/tab/reviews"},{"author":"Вадим В.","text":"Рекомендую!!! Качественная работа, приятная атмосфера в салоне!!!","rating":5,"date":null,"sourceUrl":"https://2gis.ru/kemerovo/firm/70000001055599025/tab/reviews"},{"author":"Артем К.","text":"Ребята делают красиво! Пришёл с лохмотьями, вышел и себя не узнал","rating":5,"date":null,"sourceUrl":"https://2gis.ru/kemerovo/firm/70000001055599025/tab/reviews"},{"author":"Кирилл Т.","text":"Все круто, все понравилось, мастер крутой","rating":5,"date":null,"sourceUrl":"https://2gis.ru/kemerovo/firm/70000001055599025/tab/reviews"}],"seo":{"title":"ФОРМА Барбершоп | Кемерово, ул. Кирова, 18","description":"Барбершоп ФОРМА в Кемерово: ул. Кирова, 18. Запись и уточнение времени по телефону +7 (913) 138-17-38."}};</script>
+  <script>(() => {
+  const config = SITE_CONFIG;
+  const clamp = (value, min = 0, max = 1) => Math.min(max, Math.max(min, value));
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const section = document.querySelector('#film');
+  const sticky = section.querySelector('.film__sticky');
+  const video = document.querySelector('#scrub-video');
+  const poster = document.querySelector('[data-poster]');
+  const loading = document.querySelector('.film__loading');
+  const loadingLabel = loading.querySelector('span');
+  const retry = loading.querySelector('button');
+  const heroFadeEls = [...document.querySelectorAll('.hero-fade')];
+  const heroNameEl = document.querySelector('[data-hero-name]');
+  const heroNameMaskEl = document.querySelector('[data-hero-name-mask]');
+  const veil = document.querySelector('.film__veil');
+  const caption = document.querySelector('.scene-caption');
+  const captionTitle = caption.querySelector('strong');
+  const captionNote = caption.querySelector('span');
+  const finalCard = document.querySelector('.final-card');
+  const finalEyebrow = finalCard.querySelector('[data-final-eyebrow]');
+  const finalLogo = finalCard.querySelector('[data-final-logo]');
+  const finalWordmark = finalCard.querySelector('[data-final-wordmark]');
+  const finalBooking = finalCard.querySelector('[data-final-booking]');
+  const progressLine = document.querySelector('.film-progress i');
+  const nominalEnd = (config.media.frames - 1) / config.media.fps;
+  let videoUrl = '';
+  let targetTime = 0;
+  let targetFrame = 0;
+  let progress = 0;
+  let sectionProgress = 0;
+  let activeCaption = -1;
+  let metadataReady = false;
+  let mediaReady = false;
+  let rafId = 0;
+  let lenis = null;
+  let fitHeroNameTimer = 0;
+  const seekHistory = [];
+  const errors = [];
+  const smoothstep = (value) => {
+    const x = clamp(value);
+    return x * x * (3 - 2 * x);
+  };
+  // Ease-in-out-quad, ported verbatim from work/grooming-cinematic-template/app.js's own `ease`
+  // (used there for its film__name intro lift/fade) so the hero name's exit carries the same
+  // character: a slow start, a fast middle, a soft landing -- never a linear or abrupt cut.
+  const ease = (x) => (x < 0.5 ? 2 * x * x : 1 - ((-2 * x + 2) ** 2) / 2);
+
+  // B1: labels the review's real sourceUrl by platform without inventing anything the URL
+  // doesn't already say; unrecognized-but-present URLs get a neutral, still-true label rather
+  // than being omitted or guessed at.
+  function reviewSourceLabel(url) {
+    if (!url || typeof url !== 'string') return null;
+    if (/2gis\./i.test(url)) return '2ГИС';
+    if (/yandex\./i.test(url)) return 'Яндекс Карты';
+    if (/vk\.com/i.test(url)) return 'VK';
+    return 'источник отзыва';
+  }
+
+  // B1: shrinks a review's blockquote (inline font-size, steps down from whatever the CSS clamp
+  // resolved to) only until the whole card fits the pinned stage's available height -- never
+  // truncates or clips text. Skipped for the single-review layout, which is auto-height (no
+  // fixed viewport-relative stage to overflow).
+  function fitReviewCard(article) {
+    const quote = article.querySelector('blockquote');
+    const stage = article.closest('.reviews-stage');
+    if (!quote || !stage) return;
+    quote.style.fontSize = '';
+    const maxHeight = stage.clientHeight;
+    if (!maxHeight) return;
+    const minPx = 22;
+    let size = parseFloat(getComputedStyle(quote).fontSize);
+    let guard = 0;
+    while (article.scrollHeight > maxHeight && size > minPx && guard < 60) {
+      size -= 1;
+      quote.style.fontSize = `${size}px`;
+      guard += 1;
+    }
+  }
+
+  function setupReviews() {
+    const reviews = Array.isArray(config.reviews) ? config.reviews.filter((item) => (
+      item && typeof item.author === 'string' && item.author.trim() && typeof item.text === 'string' && item.text.trim()
+    )) : [];
+    const reviewSection = document.querySelector('#reviews');
+    if (!reviews.length) {
+      reviewSection.remove();
+      return null;
+    }
+
+    reviewSection.hidden = false;
+    const track = reviewSection.querySelector('[data-review-track]');
+    const current = reviewSection.querySelector('[data-review-current]');
+    const total = reviewSection.querySelector('[data-review-total]');
+    reviewSection.style.setProperty('--review-count', reviews.length);
+    reviewSection.classList.toggle('is-single', reviews.length === 1);
+
+    reviews.forEach((review, index) => {
+      const article = document.createElement('article');
+      article.className = 'review-card';
+      article.style.setProperty('--review-z', index + 1);
+      article.setAttribute('aria-label', `Отзыв ${index + 1} из ${reviews.length}`);
+      const quote = document.createElement('blockquote');
+      quote.textContent = review.text;
+      const footer = document.createElement('footer');
+      const author = document.createElement('cite');
+      author.textContent = review.author;
+      footer.append(author);
+      const details = [];
+      if (Number.isFinite(review.rating)) details.push(`${review.rating} из 5`);
+      if (typeof review.date === 'string' && review.date.trim()) details.push(review.date.trim());
+      const source = reviewSourceLabel(review.sourceUrl);
+      if (source) details.push(source);
+      if (details.length) {
+        const meta = document.createElement('span');
+        meta.textContent = details.join(' · ');
+        footer.append(meta);
+      }
+      article.append(quote, footer);
+      track.append(article);
+    });
+
+    const cards = [...track.children];
+    total.textContent = String(cards.length).padStart(2, '0');
+    const stageEl = reviewSection.querySelector('.reviews-stage');
+    const fitAllReviewCards = () => {
+      if (reviewSection.classList.contains('is-single')) return;
+      cards.forEach((card) => fitReviewCard(card));
+    };
+    fitAllReviewCards();
+    let index = 0;
+    let reviewProgress = 0;
+    let step = 0;
+    let settledIndex = 0;
+    let transitioning = false;
+    let cooldownTimer = 0;
+    const TRANSITION_DURATION = 0.65;
+    const WHEEL_THRESHOLD = 14;
+    const TOUCH_THRESHOLD = 16;
+    // Immediate jump, kept as the low-level primitive for the debug API (window.__BARBER_QA__)
+    // and for the entry correction below; ordinary interaction always goes through goTo().
+    const moveTo = (nextIndex) => {
+      const normalized = Math.round(clamp(nextIndex, 0, cards.length - 1));
+      settledIndex = normalized;
+      const top = reviewSection.offsetTop + normalized * innerHeight;
+      if (lenis) lenis.scrollTo(top, { immediate: true });
+      else window.scrollTo(0, top);
+    };
+    const isPinned = () => {
+      const rect = reviewSection.getBoundingClientRect();
+      return rect.top <= 0.5 && rect.bottom >= innerHeight - 0.5;
+    };
+    // One wheel/touch/keyboard "notch" == exactly one review, animated through the same
+    // scroll-driven renderReviews() below via a single Lenis scrollTo -- never a free/continuous
+    // drag. handleGesture() below preventDefault()s every qualifying delta while pinned and not
+    // at a released edge, so the position can never be left mid-transit by hand; goTo() is the
+    // only thing that ever moves it (2026-09-17 regression history: a continuous/idle-settle
+    // model could not reliably avoid a momentary two-cards-visible state on a weak gesture).
+    const goTo = (nextIndex, duration = TRANSITION_DURATION) => {
+      const clamped = Math.round(clamp(nextIndex, 0, cards.length - 1));
+      if (clamped === settledIndex && Math.abs(step - clamped) < 0.01) return;
+      settledIndex = clamped;
+      transitioning = true;
+      const top = reviewSection.offsetTop + clamped * innerHeight;
+      if (lenis) lenis.scrollTo(top, { duration });
+      else window.scrollTo({ top, behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+      clearTimeout(cooldownTimer);
+      cooldownTimer = window.setTimeout(() => { transitioning = false; }, duration * 1000 + 150);
+    };
+    // Shared by wheel and touch: while pinned, everything except a release gesture at the first
+    // (up) or last (down) card is preventDefault()ed -- released gestures are left completely
+    // alone so ordinary/Lenis scrolling carries the page in or out of the section without
+    // sticking. Extra deltas that arrive during a transition + ~150ms cooldown are swallowed
+    // (still preventDefault()ed) rather than queued, so a burst of ticks never advances more
+    // than one card, and deltas under the threshold do not count as a deliberate gesture at all.
+    const handleGesture = (deltaY, event) => {
+      if (reduceMotion.matches || cards.length <= 1 || !isPinned()) return;
+      const goingDown = deltaY > 0;
+      if (goingDown && index >= cards.length - 1) return;
+      if (!goingDown && index <= 0) return;
+      event.preventDefault();
+      event.stopImmediatePropagation();
+      if (transitioning || Math.abs(deltaY) < WHEEL_THRESHOLD) return;
+      goTo(index + (goingDown ? 1 : -1));
+    };
+    window.addEventListener('wheel', (event) => handleGesture(event.deltaY, event), { passive: false });
+    let touchStartY = 0;
+    window.addEventListener('touchstart', (event) => { touchStartY = event.touches[0]?.clientY ?? 0; }, { passive: true });
+    window.addEventListener('touchmove', (event) => {
+      const y = event.touches[0]?.clientY;
+      if (y == null || !isPinned()) return;
+      const deltaY = touchStartY - y;
+      if (Math.abs(deltaY) < TOUCH_THRESHOLD) return;
+      handleGesture(deltaY, event);
+      touchStartY = y;
+    }, { passive: false });
+    track.addEventListener('keydown', (event) => {
+      const directions = { ArrowUp: -1, ArrowDown: 1, PageUp: -1, PageDown: 1 };
+      if (event.key in directions) {
+        event.preventDefault();
+        goTo(index + directions[event.key]);
+      } else if (event.key === 'Home' || event.key === 'End') {
+        event.preventDefault();
+        goTo(event.key === 'Home' ? 0 : cards.length - 1);
+      }
+    });
+    // Runs every frame right after step/index are (re)computed below, and also from the
+    // 'resize' safety net near Lenis init: whenever the position is fractional (not already
+    // resting on a whole card) and no transition is already in flight, immediately corrects
+    // with a short (~0.35s) Lenis scrollTo; handleGesture() swallows any wheel/touch delta that
+    // arrives while that correction is running (transitioning=true), so it cannot be
+    // interrupted mid-flight. A fractional step only ever occurs while the section is pinned
+    // (step is derived straight from the pinned scroll range), so this alone also fixes
+    // entering the section: a fast/multi-tick entry that lands off a whole card is corrected
+    // immediately, on whichever frame it is actually detected -- unlike an edge-triggered
+    // "just became pinned" check, which could race a rapid multi-tick entry and miss it
+    // (2026-09-17 regression: 4 quick wheel ticks into the section settled on a visibly
+    // fractional position, e.g. a hint of the next card still showing).
+    const settle = () => {
+      if (reduceMotion.matches || cards.length <= 1 || transitioning) return;
+      const target = Math.round(step);
+      if (Math.abs(step - target) <= 0.005) return;
+      goTo(target, 0.35);
+    };
+    const renderReviews = () => {
+      if (reduceMotion.matches || cards.length === 1) {
+        index = 0;
+        reviewProgress = 0;
+        step = 0;
+        current.textContent = '01';
+        if (stageEl) stageEl.style.setProperty('--rprog', `${cards.length ? 100 / cards.length : 0}%`);
+        cards.forEach((card, cardIndex) => {
+          card.classList.toggle('is-current', cardIndex === 0);
+          card.style.removeProperty('--review-y');
+          card.style.removeProperty('--review-opacity');
+          card.style.removeProperty('--review-scale');
+        });
+        return;
+      }
+      const distance = Math.max(1, reviewSection.offsetHeight - innerHeight);
+      const travelled = clamp(-reviewSection.getBoundingClientRect().top, 0, distance);
+      reviewProgress = travelled / distance;
+      step = Math.min(cards.length - 1, travelled / Math.max(1, innerHeight));
+      index = Math.min(cards.length - 1, Math.max(0, Math.round(step)));
+      settle();
+      current.textContent = String(index + 1).padStart(2, '0');
+      if (stageEl) stageEl.style.setProperty('--rprog', `${((index + 1) / cards.length) * 100}%`);
+      cards.forEach((card, cardIndex) => {
+        const phase = step - cardIndex;
+        let y = 0;
+        let opacity = 1;
+        let scale = 1;
+        if (phase < 0) {
+          const enter = smoothstep(phase + 1);
+          y = (1 - enter) * 78;
+          opacity = enter;
+          scale = 0.985 + enter * 0.015;
+        } else if (phase > 0.35 && cardIndex < cards.length - 1) {
+          const exit = smoothstep((phase - 0.35) / 0.65);
+          y = exit * -55;
+          opacity = 1 - exit;
+          scale = 1 - exit * 0.025;
+        }
+        card.style.setProperty('--review-y', `${y.toFixed(3)}vh`);
+        card.style.setProperty('--review-opacity', opacity.toFixed(4));
+        card.style.setProperty('--review-scale', scale.toFixed(4));
+        card.classList.toggle('is-current', cardIndex === index);
+        card.setAttribute('aria-hidden', cardIndex === index ? 'false' : 'true');
+      });
+    };
+    renderReviews();
+    return { count: reviews.length, track, cards, render: renderReviews, moveTo, settle, refit: fitAllReviewCards, snapshot: () => ({ index, progress: reviewProgress, step }) };
+  }
+
+  // ---------------------------------------------------------------------
+  // WCAG contrast: pick dark/light button text automatically, and nudge the
+  // configured accent's lightness only as a last resort if neither dark nor
+  // light text can reach 4.5:1 against it (the visible accent used for
+  // stars/small details elsewhere is never touched -- only the button's own
+  // background custom property is).
+  // ---------------------------------------------------------------------
+  function hexToRgb(hex) {
+    let clean = String(hex || '').trim().replace('#', '');
+    if (clean.length === 3) clean = clean.split('').map((c) => c + c).join('');
+    const n = parseInt(clean, 16);
+    if (!Number.isFinite(n) || clean.length !== 6) return [255, 255, 255];
+    return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+  }
+  function rgbToHex([r, g, b]) {
+    const toHex = (v) => Math.max(0, Math.min(255, Math.round(v))).toString(16).padStart(2, '0');
+    return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+  }
+  function relativeLuminance([r, g, b]) {
+    const lin = [r, g, b].map((c) => {
+      const s = c / 255;
+      return s <= 0.03928 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+    });
+    return 0.2126 * lin[0] + 0.7152 * lin[1] + 0.0722 * lin[2];
+  }
+  function contrastRatio(hexA, hexB) {
+    const a = relativeLuminance(hexToRgb(hexA));
+    const b = relativeLuminance(hexToRgb(hexB));
+    const [hi, lo] = a >= b ? [a, b] : [b, a];
+    return (hi + 0.05) / (lo + 0.05);
+  }
+  function rgbToHsl([r, g, b]) {
+    r /= 255; g /= 255; b /= 255;
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+    let h = 0;
+    let s = 0;
+    const l = (max + min) / 2;
+    const d = max - min;
+    if (d !== 0) {
+      s = l > 0.5 ? d / (2 - max - min) : d / (max + min);
+      if (max === r) h = ((g - b) / d + (g < b ? 6 : 0));
+      else if (max === g) h = (b - r) / d + 2;
+      else h = (r - g) / d + 4;
+      h /= 6;
+    }
+    return { h, s, l };
+  }
+  function hslToRgb({ h, s, l }) {
+    if (s === 0) { const v = l * 255; return [v, v, v]; }
+    const hue2rgb = (p, q, t) => {
+      let tt = t;
+      if (tt < 0) tt += 1;
+      if (tt > 1) tt -= 1;
+      if (tt < 1 / 6) return p + (q - p) * 6 * tt;
+      if (tt < 1 / 2) return q;
+      if (tt < 2 / 3) return p + (q - p) * (2 / 3 - tt) * 6;
+      return p;
+    };
+    const q = l < 0.5 ? l * (1 + s) : l + s - l * s;
+    const p = 2 * l - q;
+    return [255 * hue2rgb(p, q, h + 1 / 3), 255 * hue2rgb(p, q, h), 255 * hue2rgb(p, q, h - 1 / 3)];
+  }
+  const CONTRAST_MIN = 4.5;
+  const CONTRAST_DARK = '#111315';
+  const CONTRAST_LIGHT = '#ffffff';
+  function resolveAccentButtonColors(accentHex) {
+    let bg = /^#[0-9a-f]{3,6}$/i.test(String(accentHex || '')) ? accentHex : '#c9d2d8';
+    let guard = 0;
+    let cDark = contrastRatio(bg, CONTRAST_DARK);
+    let cLight = contrastRatio(bg, CONTRAST_LIGHT);
+    while (Math.max(cDark, cLight) < CONTRAST_MIN && guard < 60) {
+      const lum = relativeLuminance(hexToRgb(bg));
+      const hsl = rgbToHsl(hexToRgb(bg));
+      hsl.l = lum > 0.5 ? Math.min(0.97, hsl.l + 0.035) : Math.max(0.03, hsl.l - 0.035);
+      bg = rgbToHex(hslToRgb(hsl));
+      cDark = contrastRatio(bg, CONTRAST_DARK);
+      cLight = contrastRatio(bg, CONTRAST_LIGHT);
+      guard += 1;
+    }
+    const text = cDark >= cLight ? CONTRAST_DARK : CONTRAST_LIGHT;
+    return { bg, text, contrast: Math.max(cDark, cLight) };
+  }
+
+  // ---------------------------------------------------------------------
+  // Name mask (2026-09-17 rewrite): instead of compositing a second,
+  // separately-decoded copy of the video's pixels into a canvas (which could
+  // fall a frame or more behind the live, moving <video> element during a
+  // scrub and show as a stale "ghost" head), the pre-baked alpha mask is
+  // applied directly as a CSS mask on the wrapper around the name text
+  // (.hero-name-mask, see styles.css). Wherever the mask is transparent
+  // (the head/hand silhouette), the name is simply absent there and the
+  // real, live <video> underneath shows through on its own -- there is only
+  // ever one source of video pixels on screen. mask-size/mask-position in
+  // CSS already replicate the exact same cover-fit math #scrub-video's own
+  // object-fit:cover uses (the mask PNG's pixel aspect ratio matches the
+  // source video's, 1276x720), so no per-resize JS geometry is needed here.
+  // ---------------------------------------------------------------------
+  function loadNameMask() {
+    if (!heroNameMaskEl || !config.media.cutoutMaskDataUri) return;
+    const url = `url("${config.media.cutoutMaskDataUri}")`;
+    heroNameMaskEl.style.webkitMaskImage = url;
+    heroNameMaskEl.style.maskImage = url;
+  }
+
+  // ---------------------------------------------------------------------
+  // Giant hero name: never breaks a word, never overflows the viewport.
+  // Tries one line first, shrinking to fit inside a 92%-width / 32%-height
+  // budget; if the resulting single-line size would fall under the ~9vw
+  // legibility floor (and the name has more than one word), it splits at
+  // the space closest to the middle of the string -- never inside a word
+  // -- and re-fits the two-line block against the same budget. A single
+  // very long word is never split; it is simply shrunk further.
+  // ---------------------------------------------------------------------
+  function splitNearMiddle(text) {
+    const words = text.trim().split(/\s+/).filter(Boolean);
+    if (words.length < 2) return null;
+    let bestIndex = 1;
+    let bestDiff = Infinity;
+    const total = text.length;
+    let acc = 0;
+    for (let i = 0; i < words.length - 1; i += 1) {
+      acc += words[i].length + 1;
+      const diff = Math.abs(acc - total / 2);
+      if (diff < bestDiff) { bestDiff = diff; bestIndex = i + 1; }
+    }
+    return [words.slice(0, bestIndex).join(' '), words.slice(bestIndex).join(' ')];
+  }
+  function fitHeroName() {
+    if (!heroNameEl) return;
+    const fullText = (config.business.heroName || config.business.name || '').trim();
+    if (!fullText) return;
+    const vw = innerWidth;
+    const vh = innerHeight;
+    // 0.90 (not 0.92): fitHeroName sizes to this box symmetrically, but the rendered ink is
+    // measured slightly left-shifted at rest (negative letter-spacing pulls trailing tracking
+    // space in from the right edge only), so a symmetric CSS box leaves the left margin a bit
+    // under the right one. The extra headroom here keeps the tightest observed case above the
+    // >=3% left-margin floor without visibly shrinking the name.
+    const maxWidth = vw * 0.9;
+    const maxHeight = vh * 0.32;
+    const heightThresholdPx = vw * 0.09;
+    const renderLines = (lines) => {
+      heroNameEl.replaceChildren(...lines.map((line) => {
+        const span = document.createElement('span');
+        span.textContent = line;
+        return span;
+      }));
+    };
+    const shrinkToFit = () => {
+      let px = Math.max(24, Math.min(maxHeight * 1.35, vw * 0.32));
+      heroNameEl.style.fontSize = `${px}px`;
+      let rect = heroNameEl.getBoundingClientRect();
+      let guard = 0;
+      while (guard < 140 && px > 4 && (rect.width > maxWidth || rect.height > maxHeight)) {
+        px -= Math.max(0.4, px * 0.012);
+        heroNameEl.style.fontSize = `${px}px`;
+        rect = heroNameEl.getBoundingClientRect();
+        guard += 1;
+      }
+      return { px, rect };
+    };
+    heroNameEl.classList.remove('is-wrapped');
+    renderLines([fullText]);
+    let { px } = shrinkToFit();
+    const isSingleWord = !/\s/.test(fullText);
+    if (!isSingleWord && px < heightThresholdPx) {
+      const parts = splitNearMiddle(fullText);
+      if (parts) {
+        heroNameEl.classList.add('is-wrapped');
+        renderLines(parts);
+        ({ px } = shrinkToFit());
+      }
+    }
+    heroNameEl.dataset.fitPx = String(px.toFixed(2));
+  }
+  function scheduleFitHeroName() {
+    clearTimeout(fitHeroNameTimer);
+    fitHeroNameTimer = window.setTimeout(fitHeroName, 120);
+  }
+
+  function hydrate() {
+    document.documentElement.style.setProperty('--accent', config.palette.accent);
+    document.documentElement.style.setProperty('--ink', config.palette.ink);
+    document.documentElement.style.setProperty('--paper', config.palette.paper);
+    document.documentElement.style.setProperty('--graphite', config.palette.graphite);
+    document.title = config.seo.title;
+    document.querySelector('meta[name="description"]').content = config.seo.description;
+    document.querySelectorAll('[data-brand]').forEach((node) => { node.textContent = config.business.name; });
+    const accentColors = resolveAccentButtonColors(config.palette.accent);
+    document.documentElement.style.setProperty('--accent-btn-bg', accentColors.bg);
+    document.documentElement.style.setProperty('--accent-btn-text', accentColors.text);
+    fitHeroName();
+    const rating = config.business.rating;
+    const ratingRow = document.querySelector('[data-hero-rating]');
+    if (rating && Number.isFinite(rating.value) && Number.isFinite(rating.count) && rating.count > 0) {
+      ratingRow.querySelector('[data-rating-value]').textContent = rating.value.toLocaleString('ru-RU', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+      const metaParts = [`${rating.count} ${rating.count === 1 ? 'отзыв' : 'отзывов'}`];
+      if (typeof rating.source === 'string' && rating.source.trim()) metaParts.push(`в ${rating.source.trim()}`);
+      ratingRow.querySelector('[data-rating-meta]').textContent = metaParts.join(' ');
+      ratingRow.hidden = false;
+    } else {
+      ratingRow.hidden = true;
+    }
+    const heroLines = Array.isArray(config.business.heroNameLines) && config.business.heroNameLines.length
+      ? config.business.heroNameLines
+      : [config.business.heroName];
+    finalWordmark.replaceChildren(...heroLines.map((line) => {
+      const span = document.createElement('span');
+      span.textContent = line;
+      return span;
+    }));
+    finalEyebrow.textContent = config.media.captions.at(-1)?.title || '';
+    const configuredLogo = typeof config.business.logo === 'string'
+      ? config.business.logo.trim()
+      : (config.business.logo?.dataUri || config.business.logo?.src || '');
+    if (configuredLogo) {
+      finalLogo.src = configuredLogo;
+      finalLogo.alt = config.business.name;
+      finalLogo.hidden = false;
+      finalWordmark.hidden = true;
+    }
+    document.querySelectorAll('[data-city]').forEach((node) => { node.textContent = config.business.city; });
+    document.querySelectorAll('[data-address]').forEach((node) => { node.textContent = config.business.address; });
+    document.querySelectorAll('[data-phone-link]').forEach((node) => {
+      node.href = config.business.phoneHref;
+      node.setAttribute('aria-label', `Позвонить ${config.business.phoneDisplay}`);
+    });
+    document.querySelector('[data-phone-display]').textContent = config.business.phoneDisplay;
+    const bookingHref = typeof config.business.bookingHref === 'string' && config.business.bookingHref.trim()
+      ? config.business.bookingHref.trim()
+      : config.business.phoneHref;
+    finalBooking.href = bookingHref;
+    finalBooking.setAttribute('aria-label', `Записаться в ${config.business.name}`);
+    document.querySelectorAll('[data-hero-book]').forEach((node) => {
+      node.href = bookingHref;
+      node.setAttribute('aria-label', `Записаться в ${config.business.name}`);
+    });
+    const map = document.querySelector('[data-map-link]');
+    map.href = config.business.mapHref;
+    document.querySelector('[data-gallery]').innerHTML = config.gallery.map((item) => `
+      <figure><img src="${item.dataUri}" alt="${item.alt}" width="1000" height="1200" loading="lazy" decoding="async"></figure>
+    `).join('');
+    poster.src = config.media.posterDataUri;
+    loadNameMask();
+  }
+
+  function createVideoUrl() {
+    const portable = document.querySelector('#portable-video');
+    const base64 = portable ? portable.textContent.trim() : '';
+    if (!base64) return config.media.sourceUrl || config.media.source;
+    const chunkSize = 1024 * 1024;
+    const chunks = [];
+    for (let offset = 0; offset < base64.length; offset += chunkSize) {
+      const decoded = atob(base64.slice(offset, offset + chunkSize));
+      const bytes = new Uint8Array(decoded.length);
+      for (let index = 0; index < decoded.length; index += 1) bytes[index] = decoded.charCodeAt(index);
+      chunks.push(bytes);
+    }
+    return URL.createObjectURL(new Blob(chunks, { type: 'video/mp4' }));
+  }
+
+  function updateCaption(nextProgress) {
+    const index = config.media.captions.findIndex((item) => nextProgress >= item.from && nextProgress <= item.to);
+    const finalIndex = config.media.captions.length - 1;
+    const hideFinalCard = () => {
+      finalCard.style.setProperty('--final-card-opacity', '0');
+      finalCard.style.setProperty('--final-card-y', '24px');
+      finalCard.setAttribute('aria-hidden', 'true');
+      finalBooking.tabIndex = -1;
+      if (document.activeElement === finalBooking) finalBooking.blur();
+    };
+    if (index < 0) {
+      activeCaption = -1;
+      caption.classList.remove('is-visible');
+      caption.style.setProperty('--caption-opacity', '0');
+      caption.style.setProperty('--caption-note-opacity', '0');
+      caption.style.setProperty('--caption-y', '30px');
+      caption.style.setProperty('--caption-line', '0');
+      captionTitle.textContent = '';
+      captionNote.textContent = '';
+      hideFinalCard();
+      return;
+    }
+    const item = config.media.captions[index];
+    if (index !== activeCaption) {
+      activeCaption = index;
+      caption.dataset.position = item.position;
+      captionTitle.textContent = item.title;
+      captionNote.textContent = item.note;
+    }
+    const span = Math.max(0.001, item.to - item.from);
+    const local = clamp((nextProgress - item.from) / span);
+    const titleReveal = smoothstep(local / 0.2);
+    const noteReveal = smoothstep((local - 0.08) / 0.22);
+    const isFinal = index === finalIndex;
+    const exit = isFinal ? 1 : smoothstep((1 - local) / 0.18);
+    const noteExit = isFinal ? 1 : smoothstep((0.94 - local) / 0.18);
+    const visibility = Math.min(titleReveal, exit);
+    const noteVisibility = Math.min(noteReveal, noteExit);
+    if (isFinal) {
+      caption.style.setProperty('--caption-opacity', '0');
+      caption.style.setProperty('--caption-note-opacity', '0');
+      caption.classList.remove('is-visible');
+      finalCard.style.setProperty('--final-card-opacity', visibility.toFixed(4));
+      finalCard.style.setProperty('--final-card-y', `${((1 - visibility) * 24).toFixed(2)}px`);
+      const isFullyVisible = visibility > .98;
+      finalCard.setAttribute('aria-hidden', isFullyVisible ? 'false' : 'true');
+      finalBooking.tabIndex = isFullyVisible ? 0 : -1;
+      if (!isFullyVisible && document.activeElement === finalBooking) finalBooking.blur();
+      return;
+    }
+    hideFinalCard();
+    caption.style.setProperty('--caption-opacity', visibility.toFixed(4));
+    caption.style.setProperty('--caption-note-opacity', noteVisibility.toFixed(4));
+    caption.style.setProperty('--caption-y', `${((1 - visibility) * 30).toFixed(2)}px`);
+    caption.style.setProperty('--caption-line', visibility.toFixed(4));
+    caption.style.setProperty('--title-clip', `${(1 - titleReveal) * 100}%`);
+    caption.style.setProperty('--title-shift', `${((1 - titleReveal) * 14).toFixed(2)}px`);
+    caption.style.setProperty('--note-shift', `${((1 - noteVisibility) * 10).toFixed(2)}px`);
+    caption.classList.add('is-visible');
+  }
+
+  // --- Continuously-smoothed scrub, watchdog-protected (2026-09-18 revert to third revision) ---
+  // Two earlier versions both regressed: a frame-capped catch-up (FILM_MAX_CATCHUP_FRAMES) could
+  // only advance ~20 frames/s once a real (GPU) browser's seek latency exceeded a couple of
+  // frame-budgets, visibly falling seconds behind; an rVFC-exclusive completion gate could then
+  // deadlock outright on a seek that lands on a visually-identical frame (rVFC never fires for
+  // it). This version -- adapted from work/grooming-cinematic-template/demo/index.html's
+  // proven-on-real-trackpad approach -- drops both: `shown` is a continuous (not frame-stepped)
+  // exponential follower of the raw progress-derived target time, always moving every time it's
+  // updated, at a fixed decay rate (dt*18) independent of seek latency; `video.currentTime` is
+  // only reassigned when the follower's quantized frame number actually changes (see the
+  // frame-grid quantization note below) and no seek is already in flight, so at most one seek is
+  // ever in flight, and it always targets wherever `shown` has smoothed to *right now* -- never a
+  // capped intermediate step, and never real playback. This is symmetric for forward and
+  // backward motion: a large forward jump is not "played through" -- `shown` simply keeps
+  // exponentially closing the gap and each tick seeks to the next changed frame, exactly like a
+  // large backward jump already did. Update runs from three places (rAF loop inside render(),
+  // Lenis's own 'scroll' event, and the video's 'seeked' event) so a fresh target is picked up as
+  // soon as any of the three can observe it, not just once per animation frame.
+  // FILM_SCRUB_WATCHDOG_MS is our own addition on top of the reference design: if `video.seeking`
+  // ever stays true past that budget (a stalled decode, or a browser leaving `seeking` on for a
+  // same-frame seek), the next call forces a fresh currentTime assignment anyway instead of
+  // waiting on a seek that may never resolve.
+  //
+  // 2026-09-18: a same-day "play-to-target" hybrid was tried on top of this and reverted the same
+  // day -- for forward motion it called real video.play() with playbackRate scaled up to 4x
+  // instead of seeking, seeking only for backward motion. The browser's own frame-dropping under
+  // a fast playbackRate produced visible stutter/skipped frames (reported in both Chrome and
+  // Safari, "three frames for the whole scrub" in Safari), and it made forward and backward
+  // motion behave asymmetrically for no benefit. video.play()/playbackRate are not used anywhere
+  // in this scrub path anymore; both directions are back to exactly the same quantized-seek
+  // follower below.
+  const FILM_SCRUB_WATCHDOG_MS = 120;
+  let shown = 0;
+  let lastScrubAt = 0;
+  let seekWatchdogAt = 0;
+  // Frame-grid quantization (2026-09-17, kept through the revert above): seeking to whatever
+  // arbitrary fractional time `shown` had smoothed to on a given tick produced uneven,
+  // non-frame-aligned seeks. Now the seek target is always the nearest whole frame's *center*
+  // time ((n+0.5)/fps, never the exact frame boundary, so a seek can never land ambiguously on
+  // the cut between two frames), and a new seek is only issued when that frame number actually
+  // changes. With the all-intra (GOP=1) scrub video, every one of those frame-aligned seeks also
+  // decodes independently.
+  let lastScrubFrame = -1;
+  function updateScrub() {
+    if (!metadataReady || reduceMotion.matches) return;
+    const now = performance.now();
+    const dt = lastScrubAt ? Math.min(0.25, (now - lastScrubAt) / 1000) : 0;
+    lastScrubAt = now;
+    shown += (targetTime - shown) * (1 - Math.exp(-dt * 18));
+    if (Math.abs(targetTime - shown) < 0.01) shown = targetTime;
+
+    let forceReseek = false;
+    if (video.seeking) {
+      if (!seekWatchdogAt) seekWatchdogAt = now;
+      if (now - seekWatchdogAt < FILM_SCRUB_WATCHDOG_MS) return;
+      // watchdog escape hatch: seeking has been stuck too long -- force a fresh seek below, even
+      // if it targets the same frame as last time (a same-value reassignment can still un-stick a
+      // browser that left `seeking` on past its own budget).
+      forceReseek = true;
+    } else {
+      seekWatchdogAt = 0;
+    }
+
+    const fps = config.media.fps;
+    const durationEnd = Number.isFinite(video.duration) ? Math.max(0, video.duration - 1 / fps) : nominalEnd;
+    const seekBaseTime = Math.min(Math.max(0, shown), nominalEnd, durationEnd);
+    const frameNum = Math.max(0, Math.min(config.media.frames - 1, Math.round(seekBaseTime * fps)));
+    if (frameNum === lastScrubFrame && !forceReseek) return;
+    const quantizedTime = Math.min((frameNum + 0.5) / fps, durationEnd);
+    try {
+      const direction = quantizedTime >= video.currentTime ? 'forward' : 'reverse';
+      video.currentTime = quantizedTime;
+      lastScrubFrame = frameNum;
+      seekWatchdogAt = now;
+      seekHistory.push({ targetFrame, targetTime: quantizedTime, direction });
+      if (seekHistory.length > 40) seekHistory.shift();
+    } catch (error) {
+      errors.push(String(error));
+    }
+  }
+
+  function render(nextProgress) {
+    progress = clamp(nextProgress);
+    targetFrame = Math.round(progress * (config.media.frames - 1));
+    targetTime = targetFrame / config.media.fps;
+    // updateScrub() runs first and advances video.currentTime (by real playback or by a
+    // quantized seek, see above) toward targetTime; every visual element below is then driven by
+    // that *actual* displayed position (effProgress), not the raw scroll-derived `progress`, so
+    // captions/progress-bar/name-fade/final-card can never visually race ahead of the picture
+    // while a forward "doigryvanie" catch-up is still in flight.
+    updateScrub();
+    const effProgress = clamp(video.currentTime / nominalEnd);
+    progressLine.style.transform = `scaleX(${effProgress})`;
+    // Name-exit window (2026-09-17 rewrite): the mask hole is baked from the video's first frame
+    // (frame 0) and stays geometrically static while the video itself keeps moving underneath, so
+    // it only stays visually aligned with the real head/hand for the first handful of frames.
+    // Measured on this template's own footage (ffmpeg frame extraction + block-match against the
+    // frame-0 mask silhouette, head region only): the silhouette has already moved ~4.5px (at a
+    // 1440px-wide viewport) by video frame 1 (t=0.042s) and ~7.9px by frame 2 (t=0.083s) -- i.e. a
+    // literal <=6px bound only holds for well under one on-screen frame of scroll, which cannot be
+    // reconciled with a smooth, multi-step animated exit (see NOTES.md for the full measurement
+    // table). NAME_FADE_END is therefore set far tighter than the old canvas-era value (0.135 ->
+    // 0.045, roughly 3x), and -- as the R2 correction on top of the grooming-template's ease
+    // ported below -- the fade starts immediately at progress 0 instead of holding at full
+    // opacity first, so opacity is already well down before the mismatch grows large; this is the
+    // best practical reduction given the measured motion, not a literal <=6px guarantee at every
+    // instant while the name is still partly visible.
+    const NAME_FADE_END = 0.045;
+    const intro = clamp(effProgress / NAME_FADE_END);
+    const heroOpacity = 1 - ease(intro);
+    const finalCaption = config.media.captions.at(-1);
+    const finalSpan = Math.max(0.001, finalCaption.to - finalCaption.from);
+    const finalVeilOpacity = smoothstep((effProgress - finalCaption.from) / (finalSpan * 0.22));
+    const veilOpacity = Math.max(heroOpacity, finalVeilOpacity);
+    // Inline opacity/filter only take over once the user has actually started scrolling; at rest
+    // (heroOpacity === 1) they are removed so the CSS-only load-in stagger (.is-hero-revealed,
+    // see styles.css) stays in control instead of being overridden by an identical inline "1".
+    // hero-info/hero-actions (the bottom block) share this exact same curve as the name so both
+    // leave together, with no separate timing to cause a mismatched flicker between them.
+    heroFadeEls.forEach((el) => {
+      if (heroOpacity > 0.999) {
+        el.style.removeProperty('opacity');
+        el.style.removeProperty('filter');
+      } else {
+        el.style.opacity = String(heroOpacity);
+        el.style.filter = `blur(${(1 - heroOpacity) * 7}px)`;
+      }
+    });
+    // translateY lift uses the same eased `intro` curve (ported character from
+    // work/grooming-cinematic-template's film__name -- see the `ease` definition above), just a
+    // more modest on-screen distance than grooming's viewport-relative lift, matching this
+    // template's previous (pre-rewrite) 46px scale.
+    heroNameEl.style.setProperty('--name-lift', `${(ease(intro) * 56).toFixed(2)}px`);
+    veil.style.setProperty('--veil-opacity', veilOpacity.toFixed(4));
+    veil.style.setProperty('--hero-veil-mix', heroOpacity > 0 ? '1' : '0');
+    veil.style.setProperty('--final-veil-mix', finalVeilOpacity > 0 ? '1' : '0');
+    updateCaption(effProgress);
+  }
+
+  function scrollGeometry() {
+    const distance = section.offsetHeight - innerHeight;
+    if (distance <= 0) return { section: 0, video: 0, distance: 0, activeDistance: 0 };
+    const travelled = clamp(-section.getBoundingClientRect().top, 0, distance);
+    const holdDistance = Math.min(distance * 0.4, innerHeight * Math.max(0, Number(config.media.endHoldViewports) || 0));
+    const activeDistance = Math.max(1, distance - holdDistance);
+    return { section: travelled / distance, video: clamp(travelled / activeDistance), distance, activeDistance };
+  }
+
+  // --- Lead-based trackpad-fling guard for the pinned #film section (2026-09-17, second
+  // revision) -- adapted from work/grooming-cinematic-template/demo/index.html's `virtualScroll`
+  // guard, proven on a real trackpad. A strong swipe delivers a dense burst of native `wheel`
+  // events (macOS momentum, ~8-16ms apart); Lenis has no concept of "gesture speed", it only
+  // accumulates every delta into targetScroll and chases it -- so a fling's whole burst used to
+  // land within ~1s regardless of the section's real content length. `options.virtualScroll(e)`
+  // is called synchronously by Lenis's own onVirtualScroll on the very same {deltaX, deltaY,
+  // event} object it goes on to read from, so mutating e.deltaY here is picked up immediately,
+  // before any scrollTo/lerp happens -- this is Lenis's own sanctioned interception point, not a
+  // second competing wheel listener.
+  //  (a) Lead cap -- while `lenis.animatedScroll` (the real, already-rendered scroll position) is
+  //      inside the pinned span, the guard caps how far `lenis.targetScroll` is allowed to run
+  //      ahead of it ("lead"): if the lead in the requested direction is already at FILM_LEAD_K *
+  //      innerHeight, the delta is fully rejected (return false); otherwise it's capped to
+  //      whatever room is left. Because animatedScroll only closes the gap at `lerp` per frame,
+  //      capping the *gap itself* caps the effective scroll speed to roughly
+  //      maxLead * lerp * 60 px/s regardless of how the input stream is shaped -- unlike a
+  //      per-event rate limiter, this reacts identically whether the burst is many tiny deltas or
+  //      a few large ones, and never needs its own separate timing/refill bookkeeping. FILM_LEAD_K
+  //      is tuned per canon below from that same formula against this section's own pinned
+  //      distance, then confirmed by CDP measurement.
+  //  (b) Exit guard -- once a delta would push animatedScroll past the pinned span's bottom (or
+  //      above its top), that one delta is let through unclamped (so the section can actually be
+  //      left), but every further same-direction delta of the *same* gesture is swallowed
+  //      (e.deltaY = 0) until either a >FILM_PAUSE_MS gap appears in the incoming stream (a
+  //      gesture actually ending) or the direction reverses (an unambiguous new gesture, which
+  //      must react immediately). This stops the remaining momentum of one fling from carrying
+  //      the page through the next section(s).
+  const FILM_LEAD_K = 0.12;
+  const FILM_PAUSE_MS = 120;
+  const FILM_EXIT_SAFETY_MS = 3000;
+  let filmExit = null;
+  let filmLastEventAt = 0;
+  function filmVirtualScrollGuard(e) {
+    if (reduceMotion.matches || !e.deltaY || !lenis) return true;
+    const now = typeof e.event?.timeStamp === 'number' ? e.event.timeStamp : performance.now();
+    const dir = e.deltaY > 0 ? 1 : -1;
+    const gapMs = filmLastEventAt ? now - filmLastEventAt : Infinity;
+    filmLastEventAt = now;
+    if (filmExit && (gapMs > FILM_PAUSE_MS || filmExit.dir !== dir || now - filmExit.startedAt > FILM_EXIT_SAFETY_MS)) {
+      filmExit = null;
+    }
+    if (filmExit && filmExit.dir === dir) {
+      e.deltaY = 0;
+      e.deltaX = 0;
+      return true;
+    }
+    const top = section.offsetTop;
+    const bottom = top + section.offsetHeight - innerHeight;
+    if (bottom <= top) return true;
+    const y = lenis.animatedScroll;
+    if (y < top - 2 || y > bottom + 2) return true;
+    if ((y >= bottom - 1 && dir > 0) || (y <= top + 1 && dir < 0)) {
+      filmExit = { dir, startedAt: now };
+      return true;
+    }
+    const maxLead = innerHeight * FILM_LEAD_K;
+    const lead = lenis.targetScroll - lenis.animatedScroll;
+    if (lead * dir >= maxLead) return false;
+    const room = maxLead - lead * dir;
+    e.deltaY = dir * Math.min(Math.abs(e.deltaY), room);
+    e.deltaX = 0;
+    return true;
+  }
+
+  function frame(time) {
+    if (lenis) lenis.raf(time);
+    if (!reduceMotion.matches) {
+      const geometry = scrollGeometry();
+      sectionProgress = geometry.section;
+      render(geometry.video);
+    }
+    reviews?.render();
+    rafId = requestAnimationFrame(frame);
+  }
+
+  function showReady() {
+    mediaReady = true;
+    sticky.classList.add('is-ready');
+    sticky.classList.add('is-hero-revealed');
+    loading.classList.add('is-hidden');
+    loading.hidden = true;
+  }
+
+  function showError() {
+    errors.push('video-error');
+    loading.hidden = false;
+    loading.classList.remove('is-hidden');
+    loadingLabel.textContent = 'Фильм не загрузился. Доступен статичный кадр.';
+    loading.querySelector('i').hidden = true;
+    retry.hidden = false;
+    poster.src = config.media.fallbackDataUri;
+  }
+
+  function loadVideo() {
+    loading.hidden = false;
+    loading.classList.remove('is-hidden');
+    retry.hidden = true;
+    loading.querySelector('i').hidden = false;
+    loadingLabel.textContent = 'Подготавливаем фильм';
+    if (!videoUrl) videoUrl = createVideoUrl();
+    video.src = videoUrl;
+    video.muted = true;
+    video.playsInline = true;
+    video.pause();
+    video.load();
+  }
+
+  video.addEventListener('loadedmetadata', () => {
+    metadataReady = true;
+    video.currentTime = 0;
+    shown = 0;
+    lastScrubAt = 0;
+    seekWatchdogAt = 0;
+  });
+  video.addEventListener('loadeddata', showReady, { once: true });
+  // Third scrub-update trigger alongside the rAF loop (via render(), see frame()) and Lenis's
+  // own 'scroll' event (wired right after Lenis is constructed below): as soon as a seek this
+  // code issued actually completes, immediately check whether `shown` has moved on since, so
+  // catch-up isn't stuck waiting for the next animation frame.
+  video.addEventListener('seeked', updateScrub);
+  video.addEventListener('error', showError);
+  retry.addEventListener('click', loadVideo);
+
+  document.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', (event) => {
+      const target = document.querySelector(link.getAttribute('href'));
+      if (!target) return;
+      event.preventDefault();
+      if (lenis) lenis.scrollTo(target, { duration: 1.05 });
+      else target.scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+    });
+  });
+
+  hydrate();
+  const reviews = setupReviews();
+  if (!reduceMotion.matches && 'IntersectionObserver' in window) {
+    document.documentElement.classList.add('has-reveal-motion');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('is-inview');
+        revealObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+    document.querySelectorAll('.visit, .gallery-section, .reviews-section, .contact').forEach((node) => revealObserver.observe(node));
+  }
+  if (!reduceMotion.matches && window.Lenis) {
+    lenis = new window.Lenis({ autoRaf: false, lerp: 0.11, smoothWheel: true, virtualScroll: filmVirtualScrollGuard });
+    lenis.on('scroll', updateScrub);
+  }
+  // The step-by-step wheel/touch/keyboard model inside setupReviews() keeps the scroll position
+  // exactly aligned to a card at rest on every real interaction, so the previous idle-scroll
+  // settle() (fired ~140ms after the last 'scroll' event) is no longer needed there and has been
+  // removed; settle() is kept only as a resize safety net, since a viewport height change shifts
+  // every pixel offset the step math depends on.
+  let reviewResizeTimer = 0;
+  window.addEventListener('resize', () => {
+    clearTimeout(reviewResizeTimer);
+    reviewResizeTimer = window.setTimeout(() => {
+      // B1: the clamp() base font size is viewport-width-driven, so a resize needs a fresh fit
+      // pass (refit() resets any inline font-size before re-measuring) in addition to settle().
+      reviews?.refit();
+      reviews?.settle();
+    }, 160);
+    scheduleFitHeroName();
+  }, { passive: true });
+  window.addEventListener('orientationchange', scheduleFitHeroName);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(fitHeroName).catch(() => {});
+  loadVideo();
+  render(0);
+  rafId = requestAnimationFrame(frame);
+
+  window.__BARBER_QA__ = {
+    ready: true,
+    config: {
+      business: config.business,
+      frames: config.media.frames,
+      fps: config.media.fps,
+      duration: config.media.duration,
+      nominalEnd
+    },
+    setProgress(value) {
+      const normalized = clamp(Number(value));
+      const geometry = scrollGeometry();
+      const activeDistance = geometry.activeDistance || Math.max(1, section.offsetHeight - innerHeight);
+      const top = section.offsetTop + activeDistance * normalized;
+      if (lenis) lenis.scrollTo(top, { immediate: true });
+      else window.scrollTo(0, top);
+      render(normalized);
+      return normalized;
+    },
+    setSectionProgress(value) {
+      const normalized = clamp(Number(value));
+      const distance = Math.max(0, section.offsetHeight - innerHeight);
+      const top = section.offsetTop + distance * normalized;
+      if (lenis) lenis.scrollTo(top, { immediate: true });
+      else window.scrollTo(0, top);
+      const geometry = scrollGeometry();
+      sectionProgress = geometry.section;
+      render(geometry.video);
+      return normalized;
+    },
+    setReview(index) {
+      if (!reviews) return null;
+      reviews.moveTo(index);
+      reviews.render();
+      return reviews.snapshot();
+    },
+    scrollToElement(selector) {
+      const target = document.querySelector(selector);
+      if (!target) return false;
+      if (lenis) lenis.scrollTo(target.offsetTop, { immediate: true });
+      else window.scrollTo(0, target.offsetTop);
+      return true;
+    },
+    snapshot() {
+      return {
+        progress,
+        sectionProgress,
+        targetFrame,
+        targetTime,
+        currentTime: video.currentTime,
+        seeking: video.seeking,
+        videoReadyState: video.readyState,
+        videoSize: [video.videoWidth, video.videoHeight],
+        mediaReady,
+        activeCaption,
+        captionTitle: captionTitle.textContent,
+        captionPosition: caption.dataset.position || '',
+        captionOpacity: Number(getComputedStyle(caption).opacity),
+        captionNoteOpacity: Number(getComputedStyle(captionNote).opacity),
+        finalCardOpacity: Number(getComputedStyle(finalCard).opacity),
+        finalCardHidden: finalCard.getAttribute('aria-hidden') === 'true',
+        finalBookingHref: finalBooking.href,
+        finalBookingTabIndex: finalBooking.tabIndex,
+        veilOpacity: Number(getComputedStyle(veil).opacity),
+        finalVeilOpacity: Number(veil.style.getPropertyValue('--final-veil-mix')),
+        // Computed opacity can lag behind the just-set target while the CSS transition on
+        // .hero-fade is still interpolating (real, continuous per-frame progress updates never
+        // show this; only an instantaneous scripted jump can); heroOpacityTarget reads the raw
+        // inline value app.js actually set this render() call, unaffected by that interpolation.
+        heroOpacity: Number(getComputedStyle(heroNameEl).opacity),
+        heroOpacityTarget: heroNameEl.style.opacity === '' ? 1 : Number(heroNameEl.style.opacity),
+        heroNameRect: heroNameEl.getBoundingClientRect(),
+        heroNameFitPx: Number(heroNameEl.dataset.fitPx || 0),
+        heroNameWrapped: heroNameEl.classList.contains('is-wrapped'),
+        reducedMotion: reduceMotion.matches,
+        errors: [...errors],
+        seekHistory: [...seekHistory],
+        reviews: reviews ? { count: reviews.count, ...reviews.snapshot() } : null
+      };
+    },
+    fitHeroName,
+    accentButtonColors: () => resolveAccentButtonColors(config.palette.accent),
+    resolveAccentButtonColors,
+    contrastRatio
+  };
+
+  window.addEventListener('pagehide', () => {
+    cancelAnimationFrame(rafId);
+    lenis?.destroy();
+    if (videoUrl) URL.revokeObjectURL(videoUrl);
+  }, { once: true });
+})();
+</script>
+<script>(function () {
+  var logo = document.querySelector('[data-final-logo]');
+  var wordmark = document.querySelector('[data-final-wordmark]');
+  if (logo) { logo.hidden = true; logo.removeAttribute('src'); }
+  if (wordmark) { wordmark.hidden = false; }
+})();</script>
+<script>(function () {
+  function fitHero() {
+    document.querySelectorAll('.hero-copy h1, .final-card__wordmark').forEach(function (el) {
+      var minPx = 28;
+      el.style.fontSize = '';
+      var size = parseFloat(getComputedStyle(el).fontSize);
+      var sibling = el.nextElementSibling;
+      function overflowsOrOverlaps() {
+        if (el.scrollWidth > el.clientWidth + 1) return true;
+        if (sibling) {
+          var a = el.getBoundingClientRect();
+          var b = sibling.getBoundingClientRect();
+          if (a.bottom > b.top + 1) return true;
+        }
+        return false;
+      }
+      var guard = 0;
+      while (overflowsOrOverlaps() && size > minPx && guard < 80) {
+        size -= 1;
+        el.style.fontSize = size + 'px';
+        guard += 1;
+      }
+    });
+  }
+  var run = function () { fitHero(); };
+  if (document.fonts && document.fonts.ready) { document.fonts.ready.then(run).catch(run); }
+  else { run(); }
+  window.addEventListener('resize', run);
+})();</script>
+</body>
+</html>
