@@ -1519,6 +1519,8 @@
     var by = ((sy + sh * 0.52) / heroRect.height) * 100;
     wallBounceEl.style.setProperty("--bounce-x", bx.toFixed(2) + "%");
     wallBounceEl.style.setProperty("--bounce-y", by.toFixed(2) + "%");
+    // 2026-10-16: pole top edge in % of the hero; read only by the stacked .wall__base rule (hero.css)
+    wallEl.style.setProperty("--pole-top", ((sy / heroRect.height) * 100).toFixed(2) + "%");
 
     resizeHazeCanvas();
 
