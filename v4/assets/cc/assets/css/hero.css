@@ -793,6 +793,22 @@ a { color: inherit; }
      here) -- stays effectively translate3d(0,0,0) since parallax never runs on the
      touch-primary devices this stacked layout targets (hover:fine gate, section 9b). */
   transform: translate3d(var(--parallax-x, 0px), var(--parallax-y, 0px), 0);
+  /* 2026-10-16 (mobile "black box" fix): the footage frames are opaque near-black RGB (0..9) while the
+     wall behind them is graphite (~#0c0e12 + bounce tint), so on a phone the frame read as a darker
+     rectangle with a flat top edge (reported with a screenshot; the stacked pole hangs mid-screen, its
+     top/bottom crop edge is not hidden by the hero edge as on desktop). mix-blend-mode:screen on the
+     .pole stacking context makes black add nothing (the wall shows through exactly), the bright
+     pole is unchanged; the extra top fade dissolves the footage's flat top edge (the same eased
+     curve as --pole-mask-x, 7% of the pole height). Stacked layout only: desktop is untouched. */
+  mix-blend-mode: screen;
+  --pole-mask-top: linear-gradient(to bottom,
+    rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, .028) 1.167%, rgba(0, 0, 0, .111) 2.333%,
+    rgba(0, 0, 0, .25) 3.5%, rgba(0, 0, 0, .444) 4.667%, rgba(0, 0, 0, .694) 5.833%,
+    rgba(0, 0, 0, 1) 7%, rgba(0, 0, 0, 1) 100%);
+  -webkit-mask-image: var(--pole-mask-x), var(--pole-mask-top);
+  -webkit-mask-composite: source-in;
+  mask-image: var(--pole-mask-x), var(--pole-mask-top);
+  mask-composite: intersect;
 }
 .hero[data-layout="stacked"] .nav {
   padding-top: 18px;
